@@ -301,3 +301,250 @@ body{
 .footer-col a:hover {
     color: #ff3b3b;
 }
+
+/*----HOME----*/
+.container_content {
+    width: 100%;
+    height: 550px;
+    background: linear-gradient(180deg, #6b3610 0%, #cc8c55 100%);
+}
+
+/* Variables */
+:root {
+    --brown-1: #5c2f0a;
+    --brown-2: #8a4f11;
+    --accent: #f0b020;
+    --text: #fff8ef;
+    --muted: rgba(255,255,255,0.85);
+}
+
+/* Layout */
+.hero-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    padding: 20px;
+}
+
+/* LEFT & RIGHT PHOTO FRAMES */
+.hero-left,
+.hero-right {
+    flex: 0 0 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Base photo-frame */
+.photo-frame {
+    width: 300px;
+    height: 360px;
+    padding: 18px;
+    background: #fff;
+    border: 10px solid rgba(255,255,255,0.1);
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.45);
+    transition: transform .25s ease, box-shadow .25s ease;
+}
+
+/* Default photo-rotation */
+.hero-left .photo-frame { transform: rotate(-5deg); }
+.hero-right .photo-frame { transform: rotate(2deg); }
+
+/* Hover effect for left-right photo frame */
+.photo-frame:hover {
+    transform: rotate(0deg) scale(1.03) translateY(-6px);
+    box-shadow: 0 14px 34px rgba(0,0,0,0.5);
+}
+
+/* Photo content */
+.photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 2px;
+}
+
+/* Tape decoration */
+.tape {
+    position: absolute;
+    left: 12%;
+    right: 12%;
+    height: 28px;
+    top: -12px;
+    background: rgba(255,255,255,0.18);
+    transform: rotate(-12deg);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+}
+.tape-bottom {
+    top: auto;
+    bottom: -10px;
+    transform: rotate(8deg);
+}
+
+/* Center content */
+.hero-center {
+    flex: 1;
+    text-align: left;
+    padding: 10px 20px;
+}
+
+.site-title {
+    font-family: "Oswald", "Anton", sans-serif;
+    font-weight: 700;
+    font-size: 48px;
+    color: var(--accent);
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+    text-shadow: 2px 2px 0 rgba(0,0,0,0.45);
+}
+
+.divider {
+    width: 410px;
+    height: 4px;
+    background: rgba(255,255,255,0.12);
+    margin-bottom: 18px;
+    box-shadow: inset 0 2px 0 rgba(0,0,0,0.2);
+}
+
+.lead {
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 14px;
+    max-width: 720px;
+    font-size: 18px;
+}
+
+/* CTA button */
+.cta {
+    margin-top: 18px;
+    padding: 14px 34px;
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    margin-left: 100px;
+    color: #4b2a0b;
+    background: linear-gradient(180deg, #ffe8b3, #ffcf73);
+
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.25s ease;
+
+    /* Nảy chậm – 2s 1 vòng */
+    animation: bounceLoop 2s infinite ease-in-out;
+}
+
+/* Khi hover → dừng animation */
+.cta:hover {
+    animation: none;
+    transform: translateY(-5px) scale(1.06);
+    background: linear-gradient(180deg, #fff3cc, #ffd88a);
+    box-shadow:
+            0 10px 25px rgba(255, 212, 115, 0.5),
+            inset 0 2px 3px rgba(255, 255, 255, 0.9);
+}
+
+/* Bounce animation */
+@keyframes bounceLoop {
+    0% {
+        transform: translateY(0) scale(1);
+        box-shadow: 0 0 12px rgba(255, 214, 120, 0.45);
+    }
+    25% {
+        transform: translateY(-7px) scale(1.05);
+        box-shadow: 0 0 20px rgba(255, 214, 120, 0.65);
+    }
+    50% {
+        transform: translateY(0) scale(1);
+        box-shadow: 0 0 12px rgba(255, 214, 120, 0.45);
+    }
+    75% {
+        transform: translateY(-4px) scale(1.03);
+        box-shadow: 0 0 18px rgba(255, 214, 120, 0.55);
+    }
+    100% {
+        transform: translateY(0) scale(1);
+        box-shadow: 0 0 12px rgba(255, 214, 120, 0.45);
+    }
+}
+
+
+
+/* Right illustration */
+.illustration {
+    max-width: 320px;
+    user-select: none;
+    transform: translateY(6px);
+    transition: transform .25s ease, box-shadow .25s ease;
+}
+.illustration:hover {
+    transform: scale(1.03) translateY(-6px);
+    box-shadow: 0 14px 34px rgba(0,0,0,0.4);
+}
+.site-title {
+    font-family: "Oswald", "Anton", sans-serif;
+    font-size: 70px;
+    font-weight: 800;
+    text-align: center;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    margin: 0 0 12px;
+
+    /* Gold Gradient – sáng rực */
+    background: linear-gradient(
+            180deg,
+            #fff7d1 0%,
+            #ffe8a3 25%,
+            #ffd66c 50%,
+            #ffb73a 75%,
+            #ff9f1a 100%
+    );
+    -webkit-background-clip: text;
+    color: transparent;
+
+    /* Glow mạnh */
+    text-shadow:
+            0 0 10px rgba(255, 220, 140, 0.9),
+            0 0 20px rgba(255, 180, 80, 0.6),
+            2px 2px 4px rgba(0, 0, 0, 0.45);
+
+    transition: 0.4s ease;
+}
+
+/* Hiệu ứng khi hover để sáng hơn */
+.site-title:hover {
+    background-position: bottom;
+    transform: scale(1.06);
+    text-shadow:
+            0 0 12px rgba(255, 230, 160, 1),
+            0 0 25px rgba(255, 200, 100, 0.9),
+            0 0 45px rgba(255, 170, 60, 0.7);
+}
+
+
+
+/* Responsive */
+@media (max-width: 992px) {
+    .hero-inner {
+        flex-direction: column;
+        gap: 18px;
+        padding: 20px 12px;
+    }
+    .site-title {
+        text-align: center;
+        font-size: 36px;
+    }
+    .hero-center {
+        text-align: center;
+    }
+    .hero-right {
+        transform: translateY(-10px);
+    }
+}
+
+
