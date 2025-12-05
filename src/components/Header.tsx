@@ -1,6 +1,6 @@
 import React from "react";
 import {NavLink} from "react-router-dom";
-import "../styles/header.css"
+import "../styles/styles.css"
 
 const Header = () => {
     return (
@@ -34,12 +34,12 @@ const Header = () => {
 
 
                     <NavLink
-                        to="/customer"
+                        to="/order"
                         className={({ isActive }) =>
                             isActive ? "nav-item active" : "nav-item"
                         }
                     >
-                        KHÁCH HÀNG
+                        ĐẶT HÀNG
                     </NavLink>
 
                     <NavLink
