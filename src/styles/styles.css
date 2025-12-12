@@ -1224,8 +1224,6 @@ hr{
 }
 
 .contact-form-box {
-    width: 50%;
-    margin-top: 60px;
     background: #fff;
     padding: 35px;
     border-radius: 15px;
@@ -1242,16 +1240,14 @@ hr{
 
 
 .contact-form label {
+    text-align: left;
     font-size: 15px;
     font-weight: 600;
     color: #444;
     margin-bottom: 6px;
     display: block;
-    text-align: left;
 }
-.contact-form{
-    width: 96%;
-}
+
 .contact-form input,
 .contact-form textarea {
     width: 100%;
@@ -1309,9 +1305,48 @@ hr{
 }
 
 
-/* Responsive mobile */
 @media (max-width: 768px) {
     .form-row {
         flex-direction: column;
+    }
+}
+
+
+.contact-two-cols {
+    margin-top: 50px;
+    display: flex;
+    gap: 40px;
+    align-items: stretch;
+}
+
+.contact-form-box {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.contact-map {
+    flex: 1;
+    display: flex;
+}
+
+
+.contact-map iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+
+@media (max-width: 768px) {
+    .contact-two-cols {
+        flex-direction: column;
+    }
+
+    .contact-map iframe {
+        height: 350px;
     }
 }

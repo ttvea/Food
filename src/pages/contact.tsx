@@ -50,34 +50,51 @@ function Contact() {
                     </div>
                 </div>
 
-                <div className="contact-form-box">
-                    <h2 className="form-title">Thông tin thắc mắc, quý khách vui lòng liên hệ tại đây:</h2>
+                <div className="contact-two-cols">
 
-                    <form className="contact-form">
+                    {/* FORM */}
+                    <div className="contact-form-box">
+                        <h2 className="form-title">Thông tin thắc mắc, quý khách vui lòng liên hệ tại đây:</h2>
 
-                        <label>Tên quý khách</label>
-                        <input type="text" placeholder="Tên quý khách" />
+                        <form className="contact-form">
+                            <label>Tên quý khách</label>
+                            <input type="text" placeholder="Tên quý khách" />
 
-                        <div className="form-row">
-                            <div className="form-group">
-                                <label>Số điện thoại (*)</label>
-                                <input type="text" placeholder="Số điện thoại" />
+                            <div className="form-row">
+                                <div className="form-group">
+                                    <label>Số điện thoại (*)</label>
+                                    <input type="text" placeholder="Số điện thoại" />
+                                </div>
+
+                                <div className="form-group">
+                                    <label>Email</label>
+                                    <input type="text" placeholder="Email" />
+                                </div>
                             </div>
 
-                            <div className="form-group">
-                                <label>Email</label>
-                                <input type="text" placeholder="Email" />
-                            </div>
-                        </div>
+                            <label>Hệ thống chi nhánh</label>
+                            <input type="text" placeholder="Hệ thống chi nhánh" />
 
-                        <label>Hệ thống chi nhánh</label>
-                        <input type="text" placeholder="Hệ thống chi nhánh" />
+                            <label>Nội dung thắc mắc của quý khách</label>
+                            <textarea placeholder="Nội dung thắc mắc của quý khách"></textarea>
 
-                        <label>Nội dung thắc mắc của quý khách</label>
-                        <textarea placeholder="Nội dung thắc mắc của quý khách"></textarea>
+                            <button type="submit" className="btn-submit">Gửi thông tin</button>
+                        </form>
+                    </div>
 
-                        <button type="submit" className="btn-submit">Gửi thông tin</button>
-                    </form>
+                    {/* GOOGLE MAP */}
+                    <div className="contact-map">
+                        <iframe
+                            title="Google Map"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.140652262088!2d106.65265057597684!3d10.800810689344067!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317529292d7350fb%3A0xd459dbe6f0de12c2!2zUXXhuq1jaCBWxINuIFR14bqnbiwgUC4gMTIsIFF14bqjbSBUw6JuIELDrG5oLCBUcC4gSOG7kyBDaMOtIE1pbmggSOG7syBWw6AgVOG6oW5n!5e0!3m2!1svi!2s!4v1707123123456"
+                            width="100%"
+                            height="100%"
+                            style={{ border: 0, borderRadius: "15px" }}
+                            loading="lazy"
+                            allowFullScreen
+                        ></iframe>
+                    </div>
+
                 </div>
 
             </div>
