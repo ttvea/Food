@@ -1139,6 +1139,66 @@ hr{
     margin-top: 4px;
 }
 
+/*LIÊN HỆ*/
+.contact-section {
+    background: #ffffff;
+    padding: 40px 0;
+    font-family: Arial, sans-serif;
+}
 
+.contact-container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
 
+.dashed-line {
+    border-top: 1px dashed #ccc;
+    margin: 20px 0;
+}
 
+.contact-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 30px;
+    margin: 30px 0;
+}
+
+.contact-box {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    width: 30%;
+    min-width: 250px;
+}
+
+.icon-wrapper {
+    width: 50px;
+    height: 50px;
+    background: #ffeaea;
+    color: #e74c3c;
+    font-size: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.text {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.5;
+}
+
+.text span {
+    color: #777;
+}
