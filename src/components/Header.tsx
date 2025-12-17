@@ -1,17 +1,21 @@
 import React, { useEffect, useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate, useLocation } from "react-router-dom";
 import "../styles/styles.css";
 
 const Header = () => {
     const [user, setUser] = useState<{ username: string } | null>(null);
     const navigate = useNavigate();
+    const location = useLocation();
 
     useEffect(() => {
         const storedUser = localStorage.getItem("user");
         if (storedUser) {
             setUser(JSON.parse(storedUser));
+        } else {
+            setUser(null);
         }
-    }, []);
+    }, [location.pathname]);
+
 
     const handleLogout = () => {
         localStorage.removeItem("user");

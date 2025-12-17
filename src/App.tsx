@@ -20,7 +20,7 @@ function App() {
 
     return (
         <div className="App">
-            {!hideLayout && <Header />}
+            <Header />
             <Routes>
                 <Route path="/" element={<Navigate to="/home" replace />} />
                 <Route path="/home" element={<Home />} />
@@ -32,7 +32,7 @@ function App() {
                 <Route path="/register" element={<Register />} />
             </Routes>
             <IconScroll/>
-            {!hideLayout && <Footer />}
+            <Footer />
         </div>
     );
 }
