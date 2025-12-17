@@ -39,7 +39,6 @@
       "name": "Cơm chiên trứng",
       "img": "https://cdnv2.tgdd.vn/bhx-static/bhx/News/Images/2024/11/18/1572245/hinh-bai-tin-bhx_202411181401164171.jpg",
       "categoryId": 2,
-
       "price": 25000
     },
     {
@@ -126,8 +125,6 @@
       "categoryId": 8,
       "price": 15000
     },
-
-
     {
       "id": 14,
       "name": "Cơm chiên trứng",
@@ -184,22 +181,41 @@
       "categoryId": 2,
       "price": 40000
     }
-    ],
-
-    "detailProducts":[
-      {
-        "id": 1,
-        "productId": 1,
-        "ingredients": "Cơm, trứng, hành lá",
-        "calories": 400,
-        "protein": 100,
-        "fat": 200,
-        "carbs": 100,
-        "quantity": 10
-      }
-    ]
-
-
-
-
+  ],
+  "detailProducts": [
+    {
+      "id": 1,
+      "productId": 1,
+      "ingredients": "Cơm, trứng, hành lá",
+      "calories": 400,
+      "protein": 100,
+      "fat": 200,
+      "carbs": 100,
+      "quantity": 10
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "username": "admin",
+      "password": "123456",
+      "fullName": "Admin",
+      "role": "ADMIN"
+    },
+    {
+      "id": "2",
+      "username": "user",
+      "password": "123",
+      "fullName": "",
+      "role": "USER"
+    },
+    {
+      "id": "d066",
+      "username": "phuoclocgg123",
+      "password": "123",
+      "phone": "0813556473",
+      "fullName": "phuoclocgg123",
+      "role": "USER"
+    }
+  ]
 }

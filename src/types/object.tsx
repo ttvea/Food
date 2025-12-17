@@ -9,3 +9,10 @@ export interface Product {
     categoryId: number;
     price: number;
 }
+export interface User {
+    id: number;
+    username: string;
+    password: string;
+    fullName: string;
+    role: "USER" | "ADMIN";
+}
