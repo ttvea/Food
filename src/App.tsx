@@ -21,7 +21,7 @@ function App() {
                 <Route path="/menu" element={<Menu />} />
                 <Route path="/order" element={<Order />} />
                 <Route path="/contact" element={<Contact />} />
-                <Route path="/product:idProduct" element={<ProductDetail />} />
+                <Route path="/product/:idProduct" element={<ProductDetail />} />
             </Routes>
             <IconScroll/>
             <Footer />

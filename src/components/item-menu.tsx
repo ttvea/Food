@@ -10,7 +10,7 @@ interface ItemMenuProps {
 function ItemMenu({ product }: ItemMenuProps) {
     return (
         <div className={"item-menu"}>
-           <NavLink to={`/product?${product.id}`}>
+           <NavLink to={`/product/${product.id}`}>
                <img
                    className={"imgItem-menu"}
                    src={product.img}

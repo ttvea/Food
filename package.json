@@ -28,7 +28,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "dev": "vite",
-    "server": "json-server --watch src/fake-api/db.json --port 3001 ",
+    "server": "json-server --watch src/fake-api/db.json  --port 3001 ",
     "dev:all": "concurrently \"npm run dev\" \"npm run server\""
   },
   "eslintConfig": {
