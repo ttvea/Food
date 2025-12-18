@@ -17,7 +17,7 @@ function Menu(){
     const [products, setProducts] = useState<Product[]>([]);
     const [pageCount, setPageCount] = useState(1);
     const [startIndex, setStartIndex] = useState(0);
-    const [categoryId, setCategoryId] = useState(0);
+    const [categoryId, setCategoryId] = useState("0");
     const [activePage, setActivePage] = useState(true);
     const limit=8
     // const [searchParams] = useSearchParams();
@@ -32,7 +32,7 @@ function Menu(){
             console.log("Error getting categories from API");
         }
     }
-    async function changeProductByCategory(categoryId: number,page: number){
+    async function changeProductByCategory(categoryId: string,page: number){
         const res = await api.getProductByCategory(categoryId,page);
         const totalPage = await api.getTotalPage(categoryId);
         // dispatch(changeProducts(products));

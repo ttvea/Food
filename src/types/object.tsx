@@ -1,13 +1,27 @@
-export interface Category {
-    id: number;
-    nameCategory: string;
+export interface DetailProduct {
+    id: string;
+    productId: string;
+    ingredients: string;
+    calories: number;
+    protein: number;
+    fat: number;
+    carbs: number;
+    quantity: number;
 }
+
 export interface Product {
-    id: number;
+    id: string;
     name: string;
     img: string;
-    categoryId: number;
+    categoryId: string;
     price: number;
+    detailProducts?: DetailProduct[];
+}
+
+export interface Category {
+    id: string;
+    nameCategory: string;
+}
 }
 export interface User {
     id: number;
@@ -16,3 +30,4 @@ export interface User {
     fullName: string;
     role: "USER" | "ADMIN";
 }
+

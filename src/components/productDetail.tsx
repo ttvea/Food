@@ -2,24 +2,28 @@ import React, {useEffect, useState} from "react";
 import Home from "../pages/home";
 import Footer from "./Footer";
 import IconScroll from "./icon-scroll";
-import {Product} from "../types/object";
+import {DetailProduct, Product} from "../types/object";
 import {useParams, useSearchParams} from "react-router-dom";
 import {api} from "../services/api";
 
 function ProductDetail() {
     const [product, setProduct] = useState<Product>();
+    const [detail, setDetail] = useState<DetailProduct>();
     const {idProduct} = useParams();
 
-    // async function fetchProducts() {
-    //     if (idProduct != null) {
-    //         const product = await api.getProductById(parseInt(idProduct));
-    //         setProduct(product);
-    //     }
-    //
-    // }
-    // useEffect(() => {
-    //     fetchProducts();
-    // },[])
+    async function fetchProducts() {
+        if (idProduct != null) {
+            const res = await api.getProductAndDetailById(idProduct);
+
+            setProduct(res);
+            setDetail(res.detailProducts[0]);
+            // console.log(res.detailProducts[0]);
+        }
+
+    }
+    useEffect(() => {
+        fetchProducts();
+    },[])
     return (
         <>
             {/*<Home/>*/}
@@ -27,21 +31,21 @@ function ProductDetail() {
             {/*<IconScroll/>*/}
             <div className="productDetail">
                 <div className={"pd1"}>
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpDz4-GZI5EPxY_2Q-d_HnCANSJ42Cf6EFWg&s" alt="Food" className="productDetailImg"/>
+                    <img src={product?.img} alt="Food" className="productDetailImg"/>
                     <div className={"detail"}>
-                        <div className={"nameP"}>${product?.name}</div>
-                        <div className={"detailInfor"}>Thành phần: Mỳ, rau thơm, sốt Hàn Quốc</div>
-                        <div className={"detailInfor"}>Calories: 400 kcal</div>
-                        <div className={"detailInfor"}>Protein: 20 g</div>
-                        <div className={"detailInfor"}>Fat: 10 kcal</div>
-                        <div className={"detailInfor"}>Carbs: 10 g</div>
+                        <div className={"nameP"}>{product?.name}</div>
+                        <div className={"detailInfor"}>Thành phần: {detail?.ingredients}</div>
+                        <div className={"detailInfor"}>Calories: {detail?.calories} kcal</div>
+                        <div className={"detailInfor"}>Protein: {detail?.protein} g</div>
+                        <div className={"detailInfor"}>Fat: {detail?.fat} kcal</div>
+                        <div className={"detailInfor"}>Carbs: {detail?.carbs} g</div>
                         <div className={"rateAvg"}>
                             4.8
                             <i className="fa-solid fa-star" ></i>
 
                         </div>
                         <div className={"priceAndCart"}>
-                            <div className={"price-detail"}>100.000đ</div>
+                            <div className={"price-detail"}>{product?.price}đ</div>
                             <div className={"add-cart-detail"}>Thêm vào giỏ</div>
                         </div>
                     </div>

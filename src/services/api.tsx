@@ -11,17 +11,17 @@ export const api ={
         const response = await fetch(`${baseUrl}/products`)
         return response.json();
     },
-    getProductByCategory: async (categoryId: number,start:number): Promise<any> => {
+    getProductByCategory: async (categoryId: string,start:number): Promise<any> => {
         const response = await fetch(`${baseUrl}/products?categoryId=${categoryId}&_start=${start}&_end=${start+8}`)
        return response.json();
     },
 
-    getTotalPage: async (categoryId: number): Promise<any> => {
+    getTotalPage: async (categoryId: string): Promise<any> => {
         const response = await fetch(`${baseUrl}/products?categoryId=${categoryId}`)
         return response.json();
     },
-    getDetailProductById: async (): Promise<any> => {
-        const response = await fetch(`${baseUrl}/products?_embed=detailProducts`)
+    getProductAndDetailById: async (productId: string): Promise<any> => {
+        const response = await fetch(`${baseUrl}/products/${productId}?_embed=detailProducts`)
         return response.json();
     },
 

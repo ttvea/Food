@@ -1,191 +1,191 @@
 {
   "categories": [
     {
-      "id": 1,
+      "id": "1",
       "nameCategory": "Món nổi bật"
     },
     {
-      "id": 2,
+      "id": "2",
       "nameCategory": "Món cơm"
     },
     {
-      "id": 3,
+      "id": "3",
       "nameCategory": "Món chay"
     },
     {
-      "id": 4,
+      "id": "4",
       "nameCategory": "Món bún"
     },
     {
-      "id": 5,
+      "id": "5",
       "nameCategory": "Món thịt"
     },
     {
-      "id": 6,
+      "id": "6",
       "nameCategory": "Món canh"
     },
     {
-      "id": 7,
+      "id": "7",
       "nameCategory": "Nước uống"
     },
     {
-      "id": 8,
+      "id": "8",
       "nameCategory": "Món tráng miệng"
     }
   ],
   "products": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Cơm chiên trứng",
       "img": "https://cdnv2.tgdd.vn/bhx-static/bhx/News/Images/2024/11/18/1572245/hinh-bai-tin-bhx_202411181401164171.jpg",
-      "categoryId": 2,
+      "categoryId": "2",
       "price": 25000
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Cơm trộn",
       "img": "https://cdn.shopify.com/s/files/1/0617/2497/files/cach-lam-com-tron-han-quoc.jpg?v=1681719774",
-      "categoryId": 2,
+      "categoryId": "2",
       "price": 30000
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Cơm tấm",
       "img": "https://www.seriouseats.com/thmb/dYd_1lCRQwb2kdq_yyMgAUN0kbU=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/20230309-SEA-VietnameseBrokenRice-VyTran-hedenote-38b68317c3f64ffba5b664e1c22ae1a1.JPG",
-      "categoryId": 2,
+      "categoryId": "2",
       "price": 35000
     },
     {
-      "id": 4,
+      "id": "4",
       "name": "Cơm gà",
       "img": "https://icdn.dantri.com.vn/thumb_w/960/2017/com-ngon-viet-nam-2-1487129112313.jpg",
-      "categoryId": 2,
+      "categoryId": "2",
       "price": 28000
     },
     {
-      "id": 5,
+      "id": "5",
       "name": "Cơm hến",
       "img": "https://photo.znews.vn/w1920/Uploaded/kbd_bcvi/2020_10_02/ch.jpg",
-      "categoryId": 2,
+      "categoryId": "2",
       "price": 35000
     },
     {
-      "id": 6,
-      "name": "Cơm chiên  xào rau củ",
+      "id": "6",
+      "name": "Cơm chiên xào rau củ",
       "img": "https://cdn11.dienmaycholon.vn/filewebdmclnew/public/userupload/files/kien-thuc/cach-lam-com-chien-rau-cu-chay/cach-lam-com-chien-rau-cu-chay-5.jpg",
-      "categoryId": 2,
+      "categoryId": "2",
       "price": 40000
     },
     {
-      "id": 7,
+      "id": "7",
       "name": "Cơm chiên bò lúc lắc",
       "img": "https://cdn2.fptshop.com.vn/unsafe/1920x0/filters:format(webp):quality(75)/com_chien_bo_luc_lac_thumb_c464dabbe4.JPG",
-      "categoryId": 2,
+      "categoryId": "2",
       "price": 35000
     },
     {
-      "id": 8,
-      "name": "Cơm chiên dương  22222",
+      "id": "8",
+      "name": "Cơm chiên dương 22222",
       "img": "https://congthucgiadinh.com/storage/19/01J2DPSWQCHGTKEQ4RR3YG4VP9.jpg",
-      "categoryId": 2,
+      "categoryId": "2",
       "price": 40000
     },
     {
-      "id": 9,
+      "id": "9",
       "name": "Bún bò",
       "img": "https://example.com/bun-bo.jpg",
-      "categoryId": 4,
+      "categoryId": "4",
       "price": 28000
     },
     {
-      "id": 10,
+      "id": "10",
       "name": "Đậu hủ kho nước tương",
       "img": "https://nuocmamtin.com/wp-content/uploads/2021/09/15-2.jpg",
-      "categoryId": 3,
+      "categoryId": "3",
       "price": 25000
     },
     {
-      "id": 11,
+      "id": "11",
       "name": "Tôm khô nấu với bầu",
       "img": "https://haisanphucgia.com/wp-content/uploads/2018/06/tom-kho-nau-canh-gi-ngon-1.jpg",
-      "categoryId": 6,
+      "categoryId": "6",
       "price": 20000
     },
     {
-      "id": 12,
+      "id": "12",
       "name": "Nước cam",
       "img": "https://png.pngtree.com/png-clipart/20250614/original/pngtree-fresh-orange-juice-in-a-plastic-cup-png-image_21191516.png",
-      "categoryId": 7,
+      "categoryId": "7",
       "price": 25000
     },
     {
-      "id": 13,
+      "id": "13",
       "name": "Bánh flan",
       "img": "https://monngonmoingay.com/wp-content/uploads/2024/08/cach-lam-banh-flan-bang-noi-chien-khong-dau-1-1.jpg",
-      "categoryId": 8,
+      "categoryId": "8",
       "price": 15000
     },
     {
-      "id": 14,
+      "id": "14",
       "name": "Cơm chiên trứng",
       "img": "https://cdnv2.tgdd.vn/bhx-static/bhx/News/Images/2024/11/18/1572245/hinh-bai-tin-bhx_202411181401164171.jpg",
-      "categoryId": 2,
+      "categoryId": "2",
       "price": 25000
     },
     {
-      "id": 15,
+      "id": "15",
       "name": "Cơm trộn",
       "img": "https://cdn.shopify.com/s/files/1/0617/2497/files/cach-lam-com-tron-han-quoc.jpg?v=1681719774",
-      "categoryId": 2,
+      "categoryId": "2",
       "price": 30000
     },
     {
-      "id": 16,
+      "id": "16",
       "name": "Cơm tấm",
       "img": "https://www.seriouseats.com/thmb/dYd_1lCRQwb2kdq_yyMgAUN0kbU=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/20230309-SEA-VietnameseBrokenRice-VyTran-hedenote-38b68317c3f64ffba5b664e1c22ae1a1.JPG",
-      "categoryId": 2,
+      "categoryId": "2",
       "price": 35000
     },
     {
-      "id": 17,
+      "id": "17",
       "name": "Cơm gà",
       "img": "https://icdn.dantri.com.vn/thumb_w/960/2017/com-ngon-viet-nam-2-1487129112313.jpg",
-      "categoryId": 2,
+      "categoryId": "2",
       "price": 28000
     },
     {
-      "id": 18,
+      "id": "18",
       "name": "Cơm hến",
       "img": "https://photo.znews.vn/w1920/Uploaded/kbd_bcvi/2020_10_02/ch.jpg",
-      "categoryId": 2,
+      "categoryId": "2",
       "price": 35000
     },
     {
-      "id": 19,
+      "id": "19",
       "name": "Cơm chiên bò xào rau củ",
       "img": "https://example.com/com-chien-bo-xao.jpg",
-      "categoryId": 2,
+      "categoryId": "2",
       "price": 40000
     },
     {
-      "id": 20,
+      "id": "20",
       "name": "Cơm chiên bò lúc lắc",
       "img": "https://cdn2.fptshop.com.vn/unsafe/1920x0/filters:format(webp):quality(75)/com_chien_bo_luc_lac_thumb_c464dabbe4.JPG",
-      "categoryId": 2,
+      "categoryId": "2",
       "price": 35000
     },
     {
-      "id": 21,
+      "id": "21",
       "name": "Cơm chiên dương châu",
       "img": "https://congthucgiadinh.com/storage/19/01J2DPSWQCHGTKEQ4RR3YG4VP9.jpg",
-      "categoryId": 2,
+      "categoryId": "2",
       "price": 40000
     }
   ],
   "detailProducts": [
     {
-      "id": 1,
-      "productId": 1,
+      "id": "1",
+      "productId": "1",
       "ingredients": "Cơm, trứng, hành lá",
       "calories": 400,
       "protein": 100,
