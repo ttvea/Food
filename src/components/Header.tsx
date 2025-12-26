@@ -108,6 +108,20 @@ const Header = () => {
                         LIÊN HỆ
                     </NavLink>
 
+                    <NavLink
+                        to="/cart"
+                        className={({ isActive }) =>
+                            isActive ? "nav-item active cart-icon" : "nav-item cart-icon"
+                        }
+                    >
+                        <i className="fa-solid fa-cart-shopping"></i>
+
+                        {/*{cartCount > 0 && (*/}
+                        {/*    <span className="cart-badge">{cartCount}</span>*/}
+                        {/*)}*/}
+                    </NavLink>
+
+
                     {/* LOGIN / PROFILE */}
                     {user ? (
                         <>
