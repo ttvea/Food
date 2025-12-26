@@ -22,11 +22,13 @@ function ProductDetail() {
     const [productRecommend, setProductRecommend] = useState<Product[]>();
 
     const [hoverIndex, setHoverIndex] = useState(0);
+    const [commentId, setCommentId] = useState<string>("");
     const [rating, setRating] = useState<number>(0);
+    const [hoveredCommentId, setHoveredCommentId] = useState<string | null>(null);
     const [content, setContent] = useState("");
     const categoryId="7";
     const scrollRef = useRef<HTMLDivElement>(null);
-    const [showDelete, setShowDelete] = useState(false);
+
 
     async function postComment(userId:string,detailId:string,rateStart:number,content:string) {
         console.log("userId ", userId);
@@ -173,24 +175,32 @@ function ProductDetail() {
                                                 <div className="nameUser">
                                                     {comment.user?.fullName}
                                                 </div>
+
+
                                             </div>
 
                                             <div className="flex-row">
                                                 <div className="dateComment">
                                                     {comment.dateComment}
                                                 </div>
-                                                {!showDelete && userId && String(comment.user?.id) === userId && (
-                                                    <i className="fa-solid fa-ellipsis-vertical delete-comment"
-                                                    onMouseEnter={() =>setShowDelete(true)}
-                                                       onMouseLeave={() =>setShowDelete(false)}
-                                                    ></i>
-                                                )}
-                                                {showDelete && String(comment.user?.id) === userId && (
-                                                    <button className={"btn-delete-comment"}
-                                                        onMouseLeave={() =>setShowDelete(false)}
+                                                <div
+                                                    className="comment-actions"
+                                                    onMouseEnter={() => setHoveredCommentId(comment.id)}
+                                                    onMouseLeave={() => setHoveredCommentId(null)}
+                                                >
+                                                    {commentId === "" && String(comment.user?.id) === userId && hoveredCommentId !== comment.id && (
+                                                        <i className="fa-solid fa-ellipsis-vertical delete-comment" />
+                                                    )}
+
+                                                    {String(comment.user?.id) === userId && hoveredCommentId === comment.id && (
+                                                        <button
+                                                            className="btn-delete-comment"
                                                             onClick={() => deleteComment(comment.id)}
-                                                    >Thu hồi</button>
-                                                )}
+                                                        >
+                                                            Thu hồi
+                                                        </button>
+                                                    )}
+                                                </div>
 
                                             </div>
                                         </div>
