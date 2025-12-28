@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { NavLink, useNavigate, useLocation } from "react-router-dom";
+import {NavLink, useNavigate, useLocation, useSearchParams} from "react-router-dom";
 import "../styles/styles.css";
 import {api} from "../services/api";
 import {useContext} from "react";
@@ -10,7 +10,10 @@ const Header = () => {
     const [keyword, setKeyword] = useState("");
     const navigate = useNavigate();
     const location = useLocation();
+  
+    const [searchParams] = useSearchParams();
     const {totalQuantity} = useContext(CartContext);
+
 
     useEffect(() => {
         const storedUser = localStorage.getItem("user");
@@ -36,8 +39,15 @@ const Header = () => {
 
     // search
     const handleSearch = () => {
-        if (!keyword.trim()) return;
-        navigate(`/menu?search=${encodeURIComponent(keyword.trim())}`);
+        const params = new URLSearchParams(searchParams);
+
+        if (!keyword.trim()) {
+            params.delete("search");
+        } else {
+            params.set("search", keyword.trim());
+        }
+        params.set("page", "0");
+        navigate(`/menu?${params.toString()}`);
     };
 
 
