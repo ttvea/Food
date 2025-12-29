@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "../../styles/styles.css";
 import { api } from "../../services/api";
 import { Address as AddressType } from "../../types/object";
+import useGeoLocation from "../../components/location";
 
 function Address() {
     const [addresses, setAddresses] = useState<AddressType[]>([]);
@@ -12,6 +13,13 @@ function Address() {
     const [wards, setWards] = useState<any[]>([]);
     const [editingId, setEditingId] = useState<number | null>(null);
     const [success, setSuccess] = useState("");
+    const {
+        address: geoAddress,
+        loading: geoLoading,
+        error: geoError,
+        getCurrentLocation
+    } = useGeoLocation();
+
 
 
     const [formData, setFormData] = useState({
@@ -26,6 +34,20 @@ function Address() {
 
     const userId = localStorage.getItem("userId");
 
+    useEffect(() => {
+        if(!geoAddress) return;
+        if(geoError){
+            alert("GeoLocation could not be found.");
+            return;
+        }
+        setFormData({
+            ...formData,
+            province: geoAddress.province || "",
+            district: geoAddress.district || "",
+            ward: geoAddress.ward || "",
+            detail: geoAddress.detail || ""
+        });
+    }, [geoAddress, geoError]);
     useEffect(() => {
         if (!userId) return;
 
@@ -400,7 +422,13 @@ function Address() {
             {showForm && (
                 <div className="address-overlay">
                     <form className="address-form" onSubmit={handleSubmit}>
-                        <h3>{editingId ? "Cập nhật địa chỉ" : "Thêm địa chỉ mới"}</h3>
+                        <div className={"title-location"}>
+                            <h3>{editingId ? "Cập nhật địa chỉ" : "Thêm địa chỉ mới"}</h3>
+                            <div className={"location"} onClick={getCurrentLocation}>
+                                <i className="fa-solid fa-location-dot"></i>
+                                <div>Vị trí hiện tại</div>
+                            </div>
+                        </div>
                         <input
                             name="receiverName"
                             placeholder="Họ và tên"
