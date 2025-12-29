@@ -49,7 +49,7 @@ function Order(){
                 <div className={"container-order-2"}>
                     <div className={"title-detail-order"}>Chi tiết đơn hàng</div>
                     <div className={"title-address"}>
-                        <GetCurrentLocation/>
+                        {/*<GetCurrentLocation/>*/}
                     </div>
                     <div className={"list-cart"}>
                         <div className={"cart-detail"} >
