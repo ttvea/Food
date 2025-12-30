@@ -18,6 +18,8 @@ import AccountLayout from "./pages/account/AccountLayout";
 import Profile from "./pages/account/profile";
 import Address from "./pages/account/address";
 import ChangePassword from "./pages/account/change-password";
+import Voucher from "./pages/account/voucher";
+import OrderHistory from "./pages/account/order-history";
 
 function App() {
     const location = useLocation();
@@ -44,6 +46,8 @@ function App() {
                     <Route path="profile" element={<Profile/>}/>
                     <Route path="address" element={<Address/>}/>
                     <Route path="change-password" element={<ChangePassword/>}/>
+                    <Route path="voucher" element={<Voucher/>}/>
+                    <Route path="order-history" element={<OrderHistory/>}/>
                 </Route>
             </Routes>
             <IconScroll/>

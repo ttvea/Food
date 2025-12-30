@@ -48,7 +48,7 @@ export const api ={
     },
     getProductByCategory: async (categoryId: string,start:number): Promise<any> => {
         const response = await fetch(`${baseUrl}/products?categoryId=${categoryId}&_start=${start}&_end=${start+8}`)
-       return response.json();
+        return response.json();
     },
     sortProductByCategory: async (categoryId:string,sortField: string,order:string): Promise<any> => {
         const response = await fetch(`${baseUrl}/products?categoryId=${categoryId}&_sort=${sortField}&_order=${order}&_start=0&_end=8`);
@@ -263,5 +263,70 @@ export const api ={
             code: w.WardCode,
             name: w.WardName
         }));
-    }
+    },
+
+    // ===== VOUCHER =====
+    // tìm voucher theo mã
+    getVoucherByCode: async (code: string) => {
+        const res = await fetch(
+            `${baseUrl}/vouchers?code=${code}`
+        );
+        return res.json();
+    },
+
+    // lấy voucher của user
+    getUserVouchers: async (userId: string) => {
+        const res = await fetch(
+            `${baseUrl}/userVouchers?userId=${userId}`
+        );
+        return res.json();
+    },
+
+    // lưu voucher cho user
+    addUserVoucher: async (data: any) => {
+        const res = await fetch(`${baseUrl}/userVouchers`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data)
+        });
+        return res.json();
+    },
+
+    // đánh dấu voucher đã dùng
+    useVoucher: async (id: number) => {
+        const res = await fetch(`${baseUrl}/userVouchers/${id}`, {
+            method: "PATCH",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                used: true,
+                usedAt: new Date().toISOString()
+            })
+        });
+        return res.json();
+    },
+
+    getUserVouchersWithDetail: async (userId: string) => {
+        const res = await fetch(
+            `${baseUrl}/userVouchers?userId=${userId}&_expand=voucher`
+        );
+        return res.json();
+    },
+
+    deleteUserVoucher: async (id: number): Promise<void> => {
+        await fetch(`${baseUrl}/userVouchers/${id}`, {
+            method: "DELETE",
+        });
+    },
+
+    getAllUserVouchers: async () => {
+        const res = await fetch(`${baseUrl}/userVouchers`);
+        return res.json();
+    },
+
+    // Lấy voucher mới / đang quảng cáo
+    getNewVouchers: async () => {
+        const res = await fetch(`${baseUrl}/vouchers?active=true&_sort=createdAt&_order=desc`);
+        return res.json();
+    },
+
 }

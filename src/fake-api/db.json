@@ -244,7 +244,6 @@
       "categoryId": "7",
       "price": 25000
     },
-
     {
       "id": "193",
       "name": "Chả rươi",
@@ -474,6 +473,105 @@
       "isDefault": true,
       "userId": "3",
       "id": 13
+    }
+  ],
+  "vouchers": [
+    {
+      "id": 1,
+      "code": "FOOD20",
+      "title": "Giảm 20%",
+      "description": "Giảm 20% tối đa 100k",
+      "discountType": "PERCENT",
+      "discountValue": 20,
+      "maxDiscount": 100000,
+      "minOrder": 150000,
+      "expireDate": "2025-12-31",
+      "quantity": 2
+    },
+    {
+      "id": 3,
+      "code": "FOOD",
+      "title": "Giảm 20%",
+      "description": "Giảm 20% cho đơn từ 0K",
+      "discountType": "PERCENT",
+      "discountValue": 20,
+      "maxDiscount": 100000,
+      "minOrder": 0,
+      "expireDate": "2026-12-31",
+      "quantity": 100
+    },
+    {
+      "id": 2,
+      "code": "FREESHIP",
+      "title": "Giảm 5k",
+      "description": "Giảm 5.000đ cho mọi đơn",
+      "discountType": "FIXED",
+      "discountValue": 5000,
+      "minOrder": 0,
+      "expireDate": "2025-12-20",
+      "quantity": 200
+    },
+    {
+      "id": 4,
+      "code": "TET2026",
+      "title": "Giảm 5k",
+      "description": "Giảm 5.000đ cho mọi đơn",
+      "discountType": "FIXED",
+      "discountValue": 5000,
+      "minOrder": 0,
+      "expireDate": "2025-12-31",
+      "quantity": 1
+    }
+  ],
+  "userVouchers": [
+    {
+      "userId": "d066",
+      "voucherId": 1,
+      "code": "FOOD20",
+      "used": false,
+      "id": 2
+    },
+    {
+      "userId": "3",
+      "voucherId": 1,
+      "code": "FOOD20",
+      "used": false,
+      "id": 3
+    },
+    {
+      "userId": "3",
+      "voucherId": 2,
+      "code": "FREESHIP",
+      "used": false,
+      "id": 4
+    },
+    {
+      "userId": "3",
+      "voucherId": 3,
+      "code": "FOOD",
+      "used": false,
+      "id": 5
+    },
+    {
+      "userId": "2",
+      "voucherId": 3,
+      "code": "FOOD",
+      "used": false,
+      "id": 6
+    },
+    {
+      "userId": "d066",
+      "voucherId": 3,
+      "code": "FOOD",
+      "used": false,
+      "id": 7
+    },
+    {
+      "userId": "3",
+      "voucherId": 4,
+      "code": "Voucher",
+      "used": false,
+      "id": 8
     }
   ]
 }
