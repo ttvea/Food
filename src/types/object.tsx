@@ -55,3 +55,26 @@ export interface Address {
     detail: string;
     isDefault: boolean;
 }
+
+export interface Voucher {
+    id: number;
+    code: string;
+    title: string;
+    description: string;
+    discountType: "PERCENT" | "FIXED";
+    discountValue: number;
+    maxDiscount?: number;
+    minOrder: number;
+    expireDate: string;
+    quantity: number;
+}
+
+export interface UserVoucher {
+    id: number;
+    userId: string;
+    voucherId: number;
+    code: string;
+    used: boolean;
+    usedAt?: string;
+    voucher: Voucher;
+}
