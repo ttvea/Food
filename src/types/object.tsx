@@ -78,3 +78,23 @@ export interface UserVoucher {
     usedAt?: string;
     voucher: Voucher;
 }
+
+export interface OrderItem {
+    productId: string;
+    name: string;
+    price: number;
+    quantity: number;
+}
+
+export interface Order {
+    id?: number;
+    userId: string;
+    items: OrderItem[];
+    totalPrice: number;
+    discount: number;
+    finalPrice: number;
+    addressId: number;
+    voucherCode?: string;
+    status: "PENDING" | "CONFIRMED";
+    createdAt: string;
+}

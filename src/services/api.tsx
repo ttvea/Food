@@ -1,8 +1,10 @@
-import {Comment, User, Address} from "../types/object";
+import {Comment, User, Address, Order} from "../types/object";
+
 const GHN_TOKEN = "28cdfced-3b05-11f0-baf0-164baeb3f2fd";
 const GHN_BASE = "https://online-gateway.ghn.vn/shiip/public-api/master-data";
 
 const baseUrl = "http://localhost:3001";
+
 interface ProductQuery {
     categoryId?: string;
     keyword?: string;
@@ -10,7 +12,8 @@ interface ProductQuery {
     order?: string;
     page?: number;
 }
-export const api ={
+
+export const api = {
     getCategories: async (): Promise<any> => {
         const response = await fetch(`${baseUrl}/categories`)
         return response.json();
@@ -32,7 +35,7 @@ export const api ={
 
         const page = query.page || 0;
         params.append("_start", String(page));
-        params.append("_end", String(page+8));
+        params.append("_end", String(page + 8));
 
         const res = await fetch(`${baseUrl}/products?${params.toString()}`);
         const data = await res.json();
@@ -46,11 +49,11 @@ export const api ={
             totalPage: Math.ceil(total.length / 8)
         };
     },
-    getProductByCategory: async (categoryId: string,start:number): Promise<any> => {
-        const response = await fetch(`${baseUrl}/products?categoryId=${categoryId}&_start=${start}&_end=${start+8}`)
+    getProductByCategory: async (categoryId: string, start: number): Promise<any> => {
+        const response = await fetch(`${baseUrl}/products?categoryId=${categoryId}&_start=${start}&_end=${start + 8}`)
         return response.json();
     },
-    sortProductByCategory: async (categoryId:string,sortField: string,order:string): Promise<any> => {
+    sortProductByCategory: async (categoryId: string, sortField: string, order: string): Promise<any> => {
         const response = await fetch(`${baseUrl}/products?categoryId=${categoryId}&_sort=${sortField}&_order=${order}&_start=0&_end=8`);
         return response.json();
     },
@@ -67,8 +70,8 @@ export const api ={
         const response = await fetch(`${baseUrl}/products/${productId}?_embed=detailProducts`)
         return response.json();
     },
-    getCommentByProductId: async (detailProductId: string,startIndex:number): Promise<any> => {
-        const response = await fetch(`${baseUrl}/comments?detailProductId=${detailProductId}&_sort=dateComment&_order=desc&_start=${startIndex}&_end=${startIndex+4}&_expand=user`)
+    getCommentByProductId: async (detailProductId: string, startIndex: number): Promise<any> => {
+        const response = await fetch(`${baseUrl}/comments?detailProductId=${detailProductId}&_sort=dateComment&_order=desc&_start=${startIndex}&_end=${startIndex + 4}&_expand=user`)
         return response.json();
     },
     getTotalCommentsByProductId: async (detailProductId: string): Promise<any> => {
@@ -76,15 +79,15 @@ export const api ={
         return response.json();
     },
     deleteCommentById: async (commentId: string): Promise<any> => {
-        const response = await fetch(`${baseUrl}/comments/${commentId}`,{
+        const response = await fetch(`${baseUrl}/comments/${commentId}`, {
             method: "DELETE"
         });
         return response.json();
     },
-    postComment: async (userId:string,detailProductId:string,rateStar:number,comment:string,dateComment:string): Promise<any> => {
+    postComment: async (userId: string, detailProductId: string, rateStar: number, comment: string, dateComment: string): Promise<any> => {
         const response = await fetch(`${baseUrl}/comments`, {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
+            headers: {"Content-Type": "application/json"},
             body: JSON.stringify({
                 userId,
                 detailProductId,
@@ -117,7 +120,7 @@ export const api ={
         if (users.length === 0) {
             throw new Error("Sai tài khoản hoặc mật khẩu");
         }
-        const { password: _, ...userWithoutPassword } = users[0];
+        const {password: _, ...userWithoutPassword} = users[0];
         return userWithoutPassword;
     },
 
@@ -137,7 +140,7 @@ export const api ={
         }
         const res = await fetch(`${baseUrl}/users`, {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
+            headers: {"Content-Type": "application/json"},
             body: JSON.stringify({
                 username,
                 password,
@@ -148,7 +151,7 @@ export const api ={
         });
 
         const newUser: User = await res.json();
-        const { password: _, ...userWithoutPassword } = newUser;
+        const {password: _, ...userWithoutPassword} = newUser;
         return userWithoutPassword;
     },
 
@@ -161,7 +164,7 @@ export const api ={
     updateProfile: async (id: string, data: any) => {
         const res = await fetch(`${baseUrl}/users/${id}`, {
             method: "PATCH",
-            headers: { "Content-Type": "application/json" },
+            headers: {"Content-Type": "application/json"},
             body: JSON.stringify(data),
         });
         return res.json();
@@ -211,7 +214,7 @@ export const api ={
     ): Promise<Address> => {
         const res = await fetch("http://localhost:3001/addresses", {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
+            headers: {"Content-Type": "application/json"},
             body: JSON.stringify(address),
         });
         return res.json();
@@ -226,7 +229,7 @@ export const api ={
     updateAddress: async (id: number, data: any) => {
         const res = await fetch(`http://localhost:3001/addresses/${id}`, {
             method: "PATCH",
-            headers: { "Content-Type": "application/json" },
+            headers: {"Content-Type": "application/json"},
             body: JSON.stringify(data),
         });
         return res.json();
@@ -234,7 +237,7 @@ export const api ={
     // ===== Địa chỉ GHN =====
     getProvinces: async () => {
         const res = await fetch(`${GHN_BASE}/province`, {
-            headers: { Token: GHN_TOKEN }
+            headers: {Token: GHN_TOKEN}
         });
         const data = await res.json();
         return data.data.map((p: any) => ({
@@ -245,7 +248,7 @@ export const api ={
 
     getDistrictsByProvince: async (provinceCode: string) => {
         const res = await fetch(`${GHN_BASE}/district?province_id=${provinceCode}`, {
-            headers: { Token: GHN_TOKEN }
+            headers: {Token: GHN_TOKEN}
         });
         const data = await res.json();
         return data.data.map((d: any) => ({
@@ -256,7 +259,7 @@ export const api ={
 
     getWardsByDistrict: async (districtCode: string) => {
         const res = await fetch(`${GHN_BASE}/ward?district_id=${districtCode}`, {
-            headers: { Token: GHN_TOKEN }
+            headers: {Token: GHN_TOKEN}
         });
         const data = await res.json();
         return data.data.map((w: any) => ({
@@ -286,7 +289,7 @@ export const api ={
     addUserVoucher: async (data: any) => {
         const res = await fetch(`${baseUrl}/userVouchers`, {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
+            headers: {"Content-Type": "application/json"},
             body: JSON.stringify(data)
         });
         return res.json();
@@ -296,7 +299,7 @@ export const api ={
     useVoucher: async (id: number) => {
         const res = await fetch(`${baseUrl}/userVouchers/${id}`, {
             method: "PATCH",
-            headers: { "Content-Type": "application/json" },
+            headers: {"Content-Type": "application/json"},
             body: JSON.stringify({
                 used: true,
                 usedAt: new Date().toISOString()
@@ -326,6 +329,20 @@ export const api ={
     // Lấy voucher mới / đang quảng cáo
     getNewVouchers: async () => {
         const res = await fetch(`${baseUrl}/vouchers?active=true&_sort=createdAt&_order=desc`);
+        return res.json();
+    },
+
+    createOrder: async (order: Order) => {
+        const res = await fetch(`${baseUrl}/orders`, {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(order),
+        });
+
+        if (!res.ok) {
+            throw new Error("Không thể tạo đơn hàng");
+        }
+
         return res.json();
     },
 
