@@ -30,8 +30,15 @@ function ProductDetail() {
     const [content, setContent] = useState("");
     const categoryId = "7";
     const scrollRef = useRef<HTMLDivElement>(null);
+    const [rateStar, setRateStar] = useState<number>(0);
 
+    async function avgRate(){
+        if (idProduct != null) {
+            const avg = await api.getAvgRateByProductid(idProduct)
+            setRateStar(avg)
+        }
 
+    }
     async function postComment(userId: string, detailId: string, rateStart: number, content: string) {
         console.log("userId ", userId);
         console.log("detailId", detailId);
@@ -129,7 +136,9 @@ function ProductDetail() {
         });
 
     }, [])
-
+    useEffect(() => {
+        avgRate();
+    }, [comments]);
     return (
         <>
             {/*<Home/>*/}
@@ -146,7 +155,7 @@ function ProductDetail() {
                         <div className={"detailInfor"}>Fat: {detail?.fat} kcal</div>
                         <div className={"detailInfor"}>Carbs: {detail?.carbs} g</div>
                         <div className={"rateAvg"}>
-                            4.8
+                            {rateStar}
                             <i className="fa-solid fa-star"></i>
 
                         </div>

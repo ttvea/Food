@@ -39,15 +39,16 @@ const Header = () => {
 
     // search
     const handleSearch = () => {
-        const params = new URLSearchParams(searchParams);
+        // const params = new URLSearchParams(searchParams);
 
-        if (!keyword.trim()) {
-            params.delete("search");
-        } else {
-            params.set("search", keyword.trim());
-        }
-        params.set("page", "0");
-        navigate(`/menu?${params.toString()}`);
+        // if (!keyword.trim()) {
+        //     params.delete("search");
+        // } else {
+        //     params.set("search", keyword.trim());
+        // }
+        // params.set("page", "0");
+        // navigate(`/menu?${params.toString()}`);
+        navigate((`/menu?search=${keyword}`));
     };
 
 
