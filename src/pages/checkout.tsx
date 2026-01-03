@@ -1,41 +1,39 @@
-import {useContext, useEffect, useState} from "react";
-import {CartContext} from "../components/CartContext";
-import {api} from "../services/api";
-import {Address, Order} from "../types/object";
-import {formatPrice} from "../components/formatPrice";
-import {useNavigate} from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { CartContext } from "../components/CartContext";
+import { api } from "../services/api";
+import { Address, Order, OrderItem } from "../types/object";
+import { formatPrice } from "../components/formatPrice";
+import { useNavigate } from "react-router-dom";
 import "../styles/styles.css";
 
 const Checkout = () => {
     const navigate = useNavigate();
     const userId = localStorage.getItem("userId");
 
-    const {
-        cart,
-        totalPrice,
-        clearCart,
-    } = useContext(CartContext);
+    const { cart, totalPrice, clearCart } = useContext(CartContext);
 
+    // ===== ADDRESS =====
     const [addresses, setAddresses] = useState<Address[]>([]);
     const [selectedAddressId, setSelectedAddressId] = useState<number | null>(null);
 
+    // ===== VOUCHER =====
     const [voucherCode, setVoucherCode] = useState("");
-    const [voucher, setVoucher] = useState<any>(null);
+    const [voucherId, setVoucherId] = useState<string | undefined>();
     const [discount, setDiscount] = useState(0);
     const [userVoucherId, setUserVoucherId] = useState<number | null>(null);
 
+    // ===== LOAD ADDRESS =====
     useEffect(() => {
         if (!userId) return;
 
         api.getAddressesByUser(userId).then(data => {
             setAddresses(data);
             const defaultAddr = data.find((a: Address) => a.isDefault);
-            if (defaultAddr) {
-                setSelectedAddressId(defaultAddr.id);
-            }
+            if (defaultAddr) setSelectedAddressId(defaultAddr.id);
         });
     }, [userId]);
 
+    // ===== CALCULATE DISCOUNT =====
     const calculateDiscount = (voucher: any, total: number) => {
         if (total < voucher.minOrder) return 0;
 
@@ -53,8 +51,9 @@ const Checkout = () => {
         return 0;
     };
 
+    // ===== APPLY VOUCHER =====
     const handleApplyVoucher = async () => {
-        if (!voucherCode) return;
+        if (!voucherCode || !userId) return;
 
         const vouchers = await api.getVoucherByCode(voucherCode);
         if (vouchers.length === 0) {
@@ -70,9 +69,9 @@ const Checkout = () => {
             return;
         }
 
-        const userVouchers = await api.getUserVouchers(userId!);
+        const userVouchers = await api.getUserVouchers(userId);
         const uv = userVouchers.find(
-            (u: any) => u.code === voucherCode && !u.used
+            (u: any) => u.voucherId === v.id && !u.used
         );
 
         if (!uv) {
@@ -80,11 +79,12 @@ const Checkout = () => {
             return;
         }
 
-        setVoucher(v);
+        setVoucherId(v.id);
         setDiscount(discountValue);
         setUserVoucherId(uv.id);
     };
 
+    // ===== PLACE ORDER =====
     const handlePlaceOrder = async () => {
         if (!userId) {
             alert("Vui lòng đăng nhập");
@@ -96,33 +96,48 @@ const Checkout = () => {
             return;
         }
 
-        const order: Order = {
-            userId,
-            items: cart.map(item => ({
-                productId: item.id,
-                name: item.name,
-                price: item.price,
-                quantity: item.quantity,
-            })),
-            totalPrice,
-            discount,
-            finalPrice: totalPrice - discount,
-            addressId: selectedAddressId,
-            voucherCode: voucher?.code,
-            status: "PENDING",
-            createdAt: new Date().toISOString(),
-        };
-
         try {
-            await api.createOrder(order);
+            // CREATE ORDER
+            const order: Omit<Order, "id"> = {
+                userId,
+                totalPrice,
+                discount,
+                finalPrice: totalPrice - discount,
+                addressId: selectedAddressId,
+                voucherId,
+                methodPayment: "CASH",
+                status: "LOADING",
+                createdAt: new Date().toISOString(),
+            };
 
+            const createdOrder: Order = await api.createOrder(order);
+
+            // CREATE ORDER ITEMS
+            const orderItems: Omit<OrderItem, "id">[] = cart.map(item => ({
+                productId: item.id,
+                orderId: createdOrder.id,
+                quantity: item.quantity,
+            }));
+
+            await Promise.all(
+                orderItems.map(item =>
+                    api.createOrderItem(item)
+                )
+            );
+
+            // USE VOUCHER
             if (userVoucherId) {
                 await api.useVoucher(userVoucherId);
             }
 
+            // CLEAR CART
             clearCart();
-            navigate("/order-success");
+
+            // REDIRECT
+            navigate(`/order-success?orderId=${createdOrder.id}`);
+
         } catch (error) {
+            console.error(error);
             alert("Đặt hàng thất bại");
         }
     };
@@ -138,20 +153,19 @@ const Checkout = () => {
             <div className="checkout-container">
                 {/* LEFT */}
                 <div className="checkout-left">
-
                     {/* ADDRESS */}
                     <div className="checkout-card">
                         <h3>Địa chỉ giao hàng</h3>
 
                         {addresses.length === 0 && (
                             <p className="empty-address">
-                                Bạn chưa có địa chỉ giao hàng.
+                                Bạn chưa có địa chỉ.
                                 <span
                                     className="add-address-link"
                                     onClick={() => navigate("/account/address")}
                                 >
-                Thêm địa chỉ
-            </span>
+                                    Thêm địa chỉ
+                                </span>
                             </p>
                         )}
 
@@ -202,12 +216,8 @@ const Checkout = () => {
 
                         {cart.map(item => (
                             <div key={item.id} className="summary-item">
-                            <span>
-                                {item.name} x {item.quantity}
-                            </span>
-                                <span>
-                                {formatPrice(item.price * item.quantity)}
-                            </span>
+                                <span>{item.name} x {item.quantity}</span>
+                                <span>{formatPrice(item.price * item.quantity)}</span>
                             </div>
                         ))}
 
@@ -226,10 +236,7 @@ const Checkout = () => {
                             <span>{formatPrice(totalPrice - discount)}</span>
                         </div>
 
-                        <button
-                            className="btn-place-order"
-                            onClick={handlePlaceOrder}
-                        >
+                        <button className="btn-place-order" onClick={handlePlaceOrder}>
                             Đặt hàng
                         </button>
                     </div>

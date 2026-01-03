@@ -1022,17 +1022,6 @@
       "isDefault": false,
       "userId": "2",
       "id": 16
-    },
-    {
-      "receiverName": "Lê Văn Luận",
-      "phone": "0971649429",
-      "province": "Hồ Chí Minh",
-      "district": "Quận Thủ Đức",
-      "ward": "Phường Linh Xuân",
-      "detail": "Services Hub Thủ Đức, 18/2C QL1A, Linh Xuân, Thủ Đức, Hồ Chí Minh",
-      "isDefault": true,
-      "userId": "X2A_Kmd",
-      "id": 17
     }
   ],
   "vouchers": [
@@ -1221,36 +1210,6 @@
       "id": 16
     }
   ],
-  "orders": [
-    {
-      "userId": "X2A_Kmd",
-      "items": [
-        {
-          "productId": "193",
-          "name": "Chả rươi",
-          "price": 35000,
-          "quantity": 1
-        },
-        {
-          "productId": "12",
-          "name": "Nước cam",
-          "price": 25000,
-          "quantity": 1
-        },
-        {
-          "productId": "13",
-          "name": "Bánh flan",
-          "price": 15000,
-          "quantity": 2
-        }
-      ],
-      "totalPrice": 90000,
-      "discount": 0,
-      "finalPrice": 90000,
-      "addressId": 17,
-      "status": "PENDING",
-      "createdAt": "2026-01-02T17:11:29.667Z",
-      "id": 1
-    }
-  ]
+  "orders": [],
+  "orderItems": []
 }
