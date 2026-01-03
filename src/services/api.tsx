@@ -98,6 +98,16 @@ export const api = {
         })
         return response.json();
     },
+    getAvgRateByProductid: async (productId: string): Promise<any> => {
+        const response = await fetch(`${baseUrl}/comments?detailProductId=${productId}`);
+        const data: Comment[] = await response.json();
+        let total = 0;
+        if(data.length === 0) return 0;
+        data.forEach((comment:Comment) => {
+            total+=comment.rateStar
+        })
+        return Number((total/data.length).toFixed(1));
+    },
 
     // api search
     searchProducts: async (keyword: string) => {

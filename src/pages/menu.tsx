@@ -82,7 +82,7 @@ function Menu() {
 
     function handlePageClick(event: { selected: number }) {
         setSearchParams(prev => {
-            prev.set("page", String(event.selected));
+            prev.set("page", String(event.selected*8));
             return prev;
         });
     }

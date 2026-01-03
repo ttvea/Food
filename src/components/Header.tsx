@@ -40,6 +40,7 @@ const Header = () => {
 
     // search
     const handleSearch = () => {
+
         const params = new URLSearchParams(searchParams);
         if (!keyword.trim()) {
             params.delete("search");
