@@ -1,4 +1,4 @@
-import {Comment, User, Address, Order} from "../types/object";
+import {Comment, User, Address, Order, OrderItem} from "../types/object";
 
 const GHN_TOKEN = "28cdfced-3b05-11f0-baf0-164baeb3f2fd";
 const GHN_BASE = "https://online-gateway.ghn.vn/shiip/public-api/master-data";
@@ -332,7 +332,9 @@ export const api = {
         return res.json();
     },
 
-    createOrder: async (order: Order) => {
+    createOrder: async (
+        order: Omit<Order, "id" | "orderItems" | "voucher" | "address">
+    ): Promise<Order> => {
         const res = await fetch(`${baseUrl}/orders`, {
             method: "POST",
             headers: {"Content-Type": "application/json"},
@@ -343,6 +345,16 @@ export const api = {
             throw new Error("Không thể tạo đơn hàng");
         }
 
+        return res.json();
+    },
+
+
+    createOrderItem: async (item: Omit<OrderItem, "id">) => {
+        const res = await fetch(`${baseUrl}/orderItems`, {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(item),
+        });
         return res.json();
     },
 

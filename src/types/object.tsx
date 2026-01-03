@@ -17,6 +17,7 @@ export interface Product {
     price: number;
     detailProducts?: DetailProduct;
 }
+
 export interface Comment {
     id: string;
     userId: string;
@@ -27,11 +28,13 @@ export interface Comment {
     user?: User;
 
 }
+
 export interface Category {
     id: string;
     nameCategory: string;
 
 }
+
 export interface User {
     id: number;
     username: string;
@@ -80,21 +83,26 @@ export interface UserVoucher {
 }
 
 export interface OrderItem {
+    id: string;
     productId: string;
-    name: string;
-    price: number;
+    orderId: string;
     quantity: number;
+
 }
 
 export interface Order {
-    id?: number;
+    id: string;
     userId: string;
-    items: OrderItem[];
+    orderItems?: OrderItem[];
     totalPrice: number;
-    discount: number;
-    finalPrice: number;
+    discount?: number;
+    finalPrice?: number;
     addressId: number;
-    voucherCode?: string;
-    status: "PENDING" | "CONFIRMED";
+    voucherId?: string;
+    noteForChef?: string;
+    methodPayment: string;
+    status: "LOADING" | "DELIVERING" | "COMPLETE" | "CANCEL";
     createdAt: string;
+    voucher?: Voucher;
+    address?: Address;
 }
