@@ -13,11 +13,14 @@ import Footer from "./components/Footer";
 import IconScroll from "./components/icon-scroll";
 import ProductDetail from "./components/productDetail";
 import Cart from "./pages/cart";
+import Checkout from "./pages/checkout";
 
-import AccountLayout from "./pages/account/AccountLayout";
+import AccountLayout from "./components/AccountLayout";
 import Profile from "./pages/account/profile";
 import Address from "./pages/account/address";
 import ChangePassword from "./pages/account/change-password";
+import Voucher from "./pages/account/voucher";
+import OrderHistory from "./pages/account/order-history";
 
 function App() {
     const location = useLocation();
@@ -31,9 +34,10 @@ function App() {
                 <Route path="/" element={<Navigate to="/home" replace/>}/>
                 <Route path="/home" element={<Home/>}/>
                 <Route path="/menu" element={<Menu/>}/>
-                <Route path="/order" element={<Order/>}/>
+                {/*<Route path="/order" element={<Order/>}/>*/}
                 <Route path="/contact" element={<Contact/>}/>
                 <Route path="/cart" element={<Cart/>}/>
+                <Route path="/checkout" element={<Checkout />} />
                 <Route path="/product/:idProduct" element={<ProductDetail/>}/>
                 <Route path="/login" element={<Login/>}/>
                 <Route path="/register" element={<Register/>}/>
@@ -44,6 +48,8 @@ function App() {
                     <Route path="profile" element={<Profile/>}/>
                     <Route path="address" element={<Address/>}/>
                     <Route path="change-password" element={<ChangePassword/>}/>
+                    <Route path="voucher" element={<Voucher/>}/>
+                    <Route path="order-history" element={<OrderHistory/>}/>
                 </Route>
             </Routes>
             <IconScroll/>

@@ -954,20 +954,20 @@
       "birthday": "2004-07-10",
       "gender": "Khác",
       "avatar": ""
+    },
+    {
+      "username": "vanluanpv",
+      "password": "vanluanpv",
+      "phone": "0971649429",
+      "fullName": "Lê Văn Luận",
+      "role": "USER",
+      "id": "X2A_Kmd",
+      "birthday": "2004-02-09",
+      "gender": "Nam",
+      "avatar": ""
     }
   ],
   "addresses": [
-    {
-      "receiverName": "Võ Phước Lộcc",
-      "phone": "0813556473",
-      "province": "Cao Bằng",
-      "district": "Huyện Trà Lĩnh",
-      "ward": "Thị trấn Hùng Quốc",
-      "detail": "319/1 Nguyen Thi Minh Khai",
-      "isDefault": true,
-      "userId": "d066",
-      "id": 10
-    },
     {
       "receiverName": "Phuoc Loc",
       "phone": "0123456789",
@@ -980,17 +980,6 @@
       "id": 11
     },
     {
-      "receiverName": "Loc",
-      "phone": "0000",
-      "province": "Bạc Liêu",
-      "district": "Huyện Phước Long",
-      "ward": "Xã Phong Thạnh Tây A",
-      "detail": "Số 16 Đường 120",
-      "isDefault": false,
-      "userId": "d066",
-      "id": 12
-    },
-    {
       "receiverName": "Phuoc Loc",
       "phone": "0123456789",
       "province": "Bình Dương",
@@ -1000,6 +989,268 @@
       "isDefault": true,
       "userId": "3",
       "id": 13
+    },
+    {
+      "receiverName": "Loc",
+      "phone": "0813556473",
+      "province": "Hồ Chí Minh",
+      "district": "Quận 9",
+      "ward": "Phường Tân Phú",
+      "detail": "Số 16, Đường 120",
+      "isDefault": true,
+      "userId": "d066",
+      "id": 14
+    },
+    {
+      "receiverName": "Võ Phước Lộc",
+      "phone": "0813556473",
+      "province": "Hồ Chí Minh",
+      "district": "Quận 6",
+      "ward": "Phường 6",
+      "detail": "319/1 Nguyen Thi Minh Khai",
+      "isDefault": false,
+      "userId": "d066",
+      "id": 15
+    },
+    {
+      "receiverName": "Thiện",
+      "phone": "0123456789",
+      "province": "Hồ Chí Minh",
+      "district": "Quận Thủ Đức",
+      "ward": "Phường Linh Xuân",
+      "detail": "Services Hub Thủ Đức, 18/2C QL1A, Linh Xuân, Thủ Đức, Hồ Chí Minh",
+      "isDefault": false,
+      "userId": "2",
+      "id": 16
+    },
+    {
+      "receiverName": "Lê Văn Luận",
+      "phone": "0971649429",
+      "province": "Hồ Chí Minh",
+      "district": "Quận Thủ Đức",
+      "ward": "Phường Linh Xuân",
+      "detail": "Services Hub Thủ Đức, 18/2C QL1A, Linh Xuân, Thủ Đức, Hồ Chí Minh",
+      "isDefault": true,
+      "userId": "X2A_Kmd",
+      "id": 17
+    }
+  ],
+  "vouchers": [
+    {
+      "id": 1,
+      "code": "FOOD20",
+      "title": "Giảm 20%",
+      "description": "Giảm 20% tối đa 100k",
+      "discountType": "PERCENT",
+      "discountValue": 20,
+      "maxDiscount": 100000,
+      "minOrder": 150000,
+      "expireDate": "2025-12-31",
+      "quantity": 2
+    },
+    {
+      "id": 3,
+      "code": "FOOD",
+      "title": "Giảm 20%",
+      "description": "Giảm 20% cho đơn từ 0K",
+      "discountType": "PERCENT",
+      "discountValue": 20,
+      "maxDiscount": 100000,
+      "minOrder": 0,
+      "expireDate": "2026-12-31",
+      "quantity": 100
+    },
+    {
+      "id": 2,
+      "code": "FREESHIP",
+      "title": "Giảm 5k",
+      "description": "Giảm 5.000đ cho mọi đơn",
+      "discountType": "FIXED",
+      "discountValue": 5000,
+      "minOrder": 0,
+      "expireDate": "2025-12-20",
+      "quantity": 200
+    },
+    {
+      "id": 4,
+      "code": "TET2026",
+      "title": "Giảm 5k",
+      "description": "Giảm 5.000đ cho mọi đơn",
+      "discountType": "PERCENT",
+      "discountValue": 5,
+      "minOrder": 0,
+      "expireDate": "2025-12-31",
+      "quantity": 100
+    },
+    {
+      "id": 5,
+      "code": "SINHNHAT5TUOI",
+      "title": "Giảm 5k",
+      "description": "Giảm 5.000đ cho mọi đơn",
+      "discountType": "FIXED",
+      "discountValue": 5000,
+      "minOrder": 0,
+      "expireDate": "2025-12-31",
+      "quantity": 100
+    },
+    {
+      "id": 6,
+      "code": "FREESHIP2026",
+      "title": "Miễn phí vận chuyển",
+      "description": "Miễn phí vận chuyển cho mọi đơn hàng",
+      "discountType": "FREESHIP",
+      "discountValue": 0,
+      "minOrder": 0,
+      "expireDate": "2025-12-31",
+      "quantity": 100
+    },
+    {
+      "id": 7,
+      "code": "FREESHIP2",
+      "title": "Miễn phí vận chuyển",
+      "description": "Miễn phí vận chuyển cho mọi đơn hàng",
+      "discountType": "FREESHIP",
+      "discountValue": 0,
+      "minOrder": 0,
+      "expireDate": "2026-1-1",
+      "quantity": 100
+    },
+    {
+      "id": 8,
+      "code": "TETTAY2026",
+      "title": "Giảm 20% ",
+      "description": "Giảm 20% cho đơn từ 50k",
+      "discountType": "PERCENT",
+      "discountValue": 20,
+      "maxDiscount": 10000,
+      "minOrder": 50000,
+      "expireDate": "2026-1-1",
+      "quantity": 100
+    }
+  ],
+  "userVouchers": [
+    {
+      "userId": "3",
+      "voucherId": 1,
+      "code": "FOOD20",
+      "used": false,
+      "id": 3
+    },
+    {
+      "userId": "3",
+      "voucherId": 2,
+      "code": "FREESHIP",
+      "used": false,
+      "id": 4
+    },
+    {
+      "userId": "3",
+      "voucherId": 3,
+      "code": "FOOD",
+      "used": false,
+      "id": 5
+    },
+    {
+      "userId": "2",
+      "voucherId": 3,
+      "code": "FOOD",
+      "used": false,
+      "id": 6
+    },
+    {
+      "userId": "3",
+      "voucherId": 4,
+      "code": "Voucher",
+      "used": false,
+      "id": 8
+    },
+    {
+      "userId": "d066",
+      "voucherId": 3,
+      "code": "FOOD",
+      "used": false,
+      "id": 9
+    },
+    {
+      "userId": "d066",
+      "voucherId": 1,
+      "code": "FOOD20",
+      "used": false,
+      "id": 10
+    },
+    {
+      "userId": "d066",
+      "voucherId": 6,
+      "code": "FREESHIP2026",
+      "used": false,
+      "id": 11
+    },
+    {
+      "userId": "3",
+      "voucherId": 6,
+      "code": "FREESHIP2026",
+      "used": false,
+      "id": 12
+    },
+    {
+      "userId": "d066",
+      "voucherId": 7,
+      "code": "FREESHIP2",
+      "used": false,
+      "id": 13
+    },
+    {
+      "userId": "d066",
+      "voucherId": 8,
+      "code": "TETTAY2026",
+      "used": false,
+      "id": 14
+    },
+    {
+      "userId": "3",
+      "voucherId": 8,
+      "code": "TETTAY2026",
+      "used": false,
+      "id": 15
+    },
+    {
+      "userId": "3",
+      "voucherId": 7,
+      "code": "FREESHIP2",
+      "used": false,
+      "id": 16
+    }
+  ],
+  "orders": [
+    {
+      "userId": "X2A_Kmd",
+      "items": [
+        {
+          "productId": "193",
+          "name": "Chả rươi",
+          "price": 35000,
+          "quantity": 1
+        },
+        {
+          "productId": "12",
+          "name": "Nước cam",
+          "price": 25000,
+          "quantity": 1
+        },
+        {
+          "productId": "13",
+          "name": "Bánh flan",
+          "price": 15000,
+          "quantity": 2
+        }
+      ],
+      "totalPrice": 90000,
+      "discount": 0,
+      "finalPrice": 90000,
+      "addressId": 17,
+      "status": "PENDING",
+      "createdAt": "2026-01-02T17:11:29.667Z",
+      "id": 1
     }
   ]
 }

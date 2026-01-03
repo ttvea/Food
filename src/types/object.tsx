@@ -55,3 +55,46 @@ export interface Address {
     detail: string;
     isDefault: boolean;
 }
+
+export interface Voucher {
+    id: number;
+    code: string;
+    title: string;
+    description: string;
+    discountType: "PERCENT" | "FIXED" | "FREESHIP";
+    discountValue: number;
+    maxDiscount?: number;
+    minOrder: number;
+    expireDate: string;
+    quantity: number;
+}
+
+export interface UserVoucher {
+    id: number;
+    userId: string;
+    voucherId: number;
+    code: string;
+    used: boolean;
+    usedAt?: string;
+    voucher: Voucher;
+}
+
+export interface OrderItem {
+    productId: string;
+    name: string;
+    price: number;
+    quantity: number;
+}
+
+export interface Order {
+    id?: number;
+    userId: string;
+    items: OrderItem[];
+    totalPrice: number;
+    discount: number;
+    finalPrice: number;
+    addressId: number;
+    voucherCode?: string;
+    status: "PENDING" | "CONFIRMED";
+    createdAt: string;
+}

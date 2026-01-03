@@ -1,7 +1,7 @@
-import "../../styles/styles.css";
-import { NavLink, Outlet, useNavigate  } from "react-router-dom";
+import "../styles/styles.css";
+import { NavLink, Outlet, useNavigate, useLocation   } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { api } from "../../services/api";
+import { api } from "../services/api";
 
 
 function AccountLayout() {
@@ -9,6 +9,8 @@ function AccountLayout() {
     const [fullName, setFullName] = useState("");
     const user = JSON.parse(localStorage.getItem("user") || "{}");
     const navigate = useNavigate();
+    const location = useLocation();
+
     useEffect(() => {
         const userId = localStorage.getItem("userId");
         if (!userId) return;
@@ -17,6 +19,15 @@ function AccountLayout() {
             setFullName(user.fullName || user.username || "");
         });
     }, []);
+
+    useEffect(() => {
+        const isAccountChild =
+            location.pathname.startsWith("/account/profile") ||
+            location.pathname.startsWith("/account/address") ||
+            location.pathname.startsWith("/account/change-password");
+
+        setOpen(isAccountChild);
+    }, [location.pathname]);
 
     const handleLogout = () => {
         const ok = window.confirm("Bạn có chắc muốn đăng xuất không?");
@@ -96,15 +107,27 @@ function AccountLayout() {
 
                     </div>
 
-                    <NavLink to="/orders_history" className="menu-row">
+                    <NavLink
+                        to="/account/order-history"
+                        className={({ isActive }) =>
+                            isActive ? "menu-row menu-active" : "menu-row"
+                        }
+                    >
                         <i className="fa-solid fa-clock-rotate-left"></i>
                         <span>Lịch sử mua hàng</span>
                     </NavLink>
 
-                    <NavLink to="/voucher" className="menu-row">
+
+                    <NavLink
+                        to="/account/voucher"
+                        className={({ isActive }) =>
+                            isActive ? "menu-row menu-active" : "menu-row"
+                        }
+                    >
                         <i className="fa-solid fa-ticket"></i>
                         <span>Mã giảm giá</span>
                     </NavLink>
+
 
                     <div className="menu-row logout-btn" onClick={handleLogout}>
                         <i className="fa-solid fa-right-from-bracket"></i>

@@ -10,10 +10,10 @@ const Header = () => {
     const [keyword, setKeyword] = useState("");
     const navigate = useNavigate();
     const location = useLocation();
-  
+
     const [searchParams] = useSearchParams();
     const {totalQuantity} = useContext(CartContext);
-
+    const {clearCart} = useContext(CartContext);
 
     useEffect(() => {
         const storedUser = localStorage.getItem("user");
@@ -34,21 +34,21 @@ const Header = () => {
         localStorage.removeItem("userId");
 
         // Điều hướng
+        clearCart();
         navigate("/login"); // hoặc "/home"
     };
 
     // search
     const handleSearch = () => {
-        // const params = new URLSearchParams(searchParams);
 
-        // if (!keyword.trim()) {
-        //     params.delete("search");
-        // } else {
-        //     params.set("search", keyword.trim());
-        // }
-        // params.set("page", "0");
-        // navigate(`/menu?${params.toString()}`);
-        navigate((`/menu?search=${keyword}`));
+        const params = new URLSearchParams(searchParams);
+        if (!keyword.trim()) {
+            params.delete("search");
+        } else {
+            params.set("search", keyword.trim());
+        }
+        params.set("page", "0");
+        navigate(`/menu?${params.toString()}`);
     };
 
 
