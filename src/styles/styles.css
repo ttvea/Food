@@ -1042,6 +1042,44 @@ hr{
     cursor: pointer;
     opacity: 0.8;
 }
+.none-order{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    height: 330px;
+}
+.none-menu{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: saddlebrown;
+    font-weight: bold;
+    height: 330px;
+}
+.img-not-found{
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 20px;
+}
+.btn-menu{
+    width: 100px;
+    height: 40px;
+    font-size: 20px;
+    border-radius: 10px;
+    background-color: #2ecc71;
+    border: none;
+    color: white;
+}
+.btn-menu:hover{
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+
 /*OrderHistory*/
 .header {
     width: 100%;

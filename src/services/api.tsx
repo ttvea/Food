@@ -389,9 +389,32 @@ export const api = {
     getOrderItemByOrderId: async (orderId: string) => {
         const res = await fetch(`${baseUrl}/orderItems?orderId=${orderId}&_expand=product`, {})
         return res.json();
-    }
+    },
+    cancelOrder: async (orderId: string) => {
+        const getRes = await fetch(`${baseUrl}/orders/${orderId}`);
 
+        const order = await getRes.json();
 
+        // console.log(order.status);
+        if (order.status!=="PENDING") {
+            throw new Error(
+                `Không thể hủy đơn hàng. Trạng thái hiện tại: ${order.status || "không xác định"}`
+            );
+        }
+        const deleteRes = await fetch(`${baseUrl}/orders/${orderId}`, {
+            method: "DELETE",
+        });
+
+        if (!deleteRes.ok) {
+            throw new Error("Hủy đơn hàng thất bại");
+        }
+        return {
+            success: true,
+            message: "Đơn hàng đã được hủy thành công",
+            orderId,
+            previousStatus: order.status
+        };
+    },
     createOrderItem: async (item: Omit<OrderItem, "id">) => {
         const res = await fetch(`${baseUrl}/orderItems`, {
             method: "POST",

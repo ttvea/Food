@@ -4,22 +4,35 @@ import React, {useEffect, useState} from "react";
 import {formatPrice} from "../../components/formatPrice";
 import {Order,OrderItem,Product} from "../../types/object";
 import {api} from "../../services/api";
+import itemOrder from "../../components/item-order";
+import Alert from '@mui/material/Alert';
+import {Snackbar} from "@mui/material";
+import ConfirmDialog from "../../components/Dialog";
+
+
 
 
 function OrderHistory() {
-    const [filter, setFilter] = useState<"ALL" | "LOADING" | "DELIVERING" | "COMPLETE" | "CANCEL">("ALL");
+    const [filter, setFilter] = useState<"ALL" | "WAITING_PAYMENT" | "PENDING" | "COOKING" | "DELIVERING" | "COMPLETE" | "CANCEL">("ALL");
     const [orders, setOrders] = useState<Order[]>([]);
+    const [notifyCancel, setNotifyCancel] = useState<boolean>(false);
     const [searchParams, setSearchParams] = useSearchParams();
+    const [confirmOpen, setConfirmOpen] = useState(false);
+    const [selectedOrderId, setSelectedOrderId] = useState<string>("");
     const query= {
         userId: searchParams.get("userId") || "",
         status: searchParams.get("status") || "",
         sortField: searchParams.get("sort") || "",
         order: searchParams.get("order") || "",
     }
-   function getOrderStatusText (status: "LOADING" | "DELIVERING" | "COMPLETE" | "CANCEL"): string {
+   function getOrderStatusText (status: "WAITING_PAYMENT" | "PENDING" | "COOKING" | "DELIVERING" | "COMPLETE" | "CANCEL"): string {
        switch (status) {
-           case "LOADING":
+           case "WAITING_PAYMENT":
+               return "Đợi thanh toán";
+           case "PENDING":
                return "Đang xử lý";
+               case "COOKING":
+                   return "Đang nấu"
            case "DELIVERING":
                return "Đang giao hàng";
            case "COMPLETE":
@@ -62,7 +75,25 @@ function OrderHistory() {
             return prev;
         });
     }
-   
+    function handleCancelClick(orderId: string) {
+        setSelectedOrderId(orderId);
+        setConfirmOpen(true);
+    }
+    async function confirmCancelOrder() {
+        setConfirmOpen(false);
+        try {
+            await api.cancelOrder(selectedOrderId);
+            setNotifyCancel(true);
+            await getOrderHistory();
+        } catch (error) {
+            console.error("Lỗi khi hủy đơn hàng:", error);
+        }
+    }
+
+    function cancelCancelOrder() {
+        setConfirmOpen(false);
+        setSelectedOrderId("");
+    }
     async function getOrderHistory() {
         const ordersRes = await api.getOrderByUserId(query);
         const ordersWithItems = await Promise.all(
@@ -93,8 +124,11 @@ function OrderHistory() {
 
             <div className="voucher-filter">
                 <button className={filter === "ALL" ? "active" : ""} onClick={() => setFilter("ALL")}>Tất cả</button>
-                <button className={filter === "LOADING" ? "active" : ""} onClick={() => setFilter("LOADING")}>Đang xử
-                    lý
+                <button className={filter === "WAITING_PAYMENT" ? "active" : ""} onClick={() => setFilter("WAITING_PAYMENT")}>Đợi thanh toán
+                </button>
+                <button className={filter === "PENDING" ? "active" : ""} onClick={() => setFilter("PENDING")}>Đang xử lý
+                </button>
+                <button className={filter === "COOKING" ? "active" : ""} onClick={() => setFilter("COOKING")}>Đang nấu
                 </button>
                 <button className={filter === "DELIVERING" ? "active" : ""} onClick={() => setFilter("DELIVERING")}>Đang
                     vận chuyển
@@ -198,15 +232,48 @@ function OrderHistory() {
                             <div className={"titleDetailOrder"}>Tổng tiền</div>
                             <div className={"valueDetail"}>{formatPrice(order.finalPrice as number)}</div>
                         </div>
-                        {order.status==="LOADING" &&(
-                            <button className={"cancelOrder"}>Hủy đơn hàng</button>
+                        {order.status==="PENDING" &&(
+                            <button className={"cancelOrder"} onClick={()=>handleCancelClick(order.id)}>Hủy đơn hàng</button>
+
                         )}
+
                     </div>
                 </div>
             ))}
             {orders.length === 0 && (
-                <div>Không có đơn hàng nào</div>
+                <div className={"none-order"}>
+                    <h3>Không có đơn hàng nào</h3>
+                </div>
             )}
+            <Snackbar
+                open={notifyCancel}
+                autoHideDuration={2000}
+                onClose={() => setNotifyCancel(false)}
+                anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+                sx={{
+                    paddingTop: '80px',
+                    zIndex: 9999,
+            }}
+
+            >
+                <Alert
+                    // onClose={() => setNotifyCancel(false)}
+                    severity="success"
+                    variant="filled"
+                    sx={{ width: '100%', minWidth: 300 }}
+                >
+                    Đơn hàng đã được hủy thành công!
+                </Alert>
+            </Snackbar>
+            <ConfirmDialog
+                open={confirmOpen}
+                title="Xác nhận hủy đơn hàng"
+                message="Bạn chắc chắn muốn hủy đơn hàng này?"
+                confirmText="Hủy đơn hàng"
+                cancelText="Không"
+                onConfirm={confirmCancelOrder}
+                onCancel={cancelCancelOrder}
+            />
 
         </div>
     )
