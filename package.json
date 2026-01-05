@@ -17,6 +17,7 @@
     "@types/react-dom": "^19.2.3",
     "json-server": "^0.17.4",
     "react": "^19.2.0",
+    "react-confirm": "^0.5.0-1",
     "react-dom": "^19.2.0",
     "react-indiana-drag-scroll": "^2.2.1",
     "react-paginate": "^8.3.0",

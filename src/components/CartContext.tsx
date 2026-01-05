@@ -1,5 +1,6 @@
 import {createContext, useState, useEffect, ReactNode} from "react";
 import {Product} from "../types/object";
+import {useNavigate} from "react-router-dom";
 
 export interface CartItem extends Product {
     quantity: number;
@@ -22,7 +23,7 @@ export const CartContext = createContext<CartContextType>(
 
 export const CartProvider = ({children}: { children: ReactNode }) => {
     const userId = localStorage.getItem("userId");
-
+    const navigate = useNavigate();
     const [cart, setCart] = useState<CartItem[]>(() => {
         if (!userId) return [];
         const stored = localStorage.getItem(`cart_${userId}`);
@@ -47,7 +48,7 @@ export const CartProvider = ({children}: { children: ReactNode }) => {
 
     const addToCart = (product: Product) => {
         if (!userId) {
-            alert("Vui lòng đăng nhập để thêm vào giỏ hàng");
+            navigate("/login");
             return;
         }
 

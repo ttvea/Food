@@ -1,5 +1,5 @@
-import React from "react";
-import {useState, useEffect} from "react";
+import React, {useEffect} from "react";
+import {useState} from "react";
 import "../styles/styles.css"
 // import { useSearchParams} from "react-router-dom";
 import {Category, Product} from "../types/object";
@@ -39,6 +39,7 @@ function Menu() {
         try {
             const categories = await api.getCategories();
             setCategories(categories);
+
         } catch {
             console.log("Error getting categories from API");
         }
@@ -60,6 +61,7 @@ function Menu() {
     }
 
     function changeProductByCategory(categoryId: string) {
+
         setSearchParams(prev => {
             prev.set("category", categoryId);
             prev.set("page", "0");
@@ -87,6 +89,9 @@ function Menu() {
         });
     }
 
+    useEffect(() => {
+
+    }, []);
 
     //search product
     // async function searchProducts() {
@@ -199,6 +204,13 @@ function Menu() {
             {/*    pageCount={pageCount}*/}
             {/*    renderOnZeroPageCount={null}*/}
             {/*/>*/}
+            {products.length===0 && (
+                <div className={"none-menu"}>
+
+                    <img className={"img-not-found"} src="https://cdn.dribbble.com/userupload/21994211/file/still-3af72ec9e2100142d6f4d319a0709c06.gif?resize=400x0" alt="not_found_meal"/>
+                    <h3>Không có món ăn này</h3>
+                </div>
+            )}
         </>
     )
 }

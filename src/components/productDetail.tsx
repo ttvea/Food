@@ -3,7 +3,7 @@ import Home from "../pages/home";
 import Footer from "./Footer";
 import IconScroll from "./icon-scroll";
 import {DetailProduct, Product, Comment, User} from "../types/object";
-import {useParams, useSearchParams} from "react-router-dom";
+import {useNavigate, useParams, useSearchParams} from "react-router-dom";
 import {api} from "../services/api";
 import {formatPrice} from "./formatPrice";
 import ReactPaginate from "react-paginate";
@@ -22,6 +22,7 @@ function ProductDetail() {
     const [pageCountProducts, setPageCountProducts] = useState<number>(0);
     const [productRecommend, setProductRecommend] = useState<Product[]>();
     const {addToCart} = useContext(CartContext);
+    const navigate = useNavigate();
 
     const [hoverIndex, setHoverIndex] = useState(0);
     const [commentId, setCommentId] = useState<string>("");
@@ -39,17 +40,21 @@ function ProductDetail() {
         }
 
     }
-    async function postComment(userId: string, detailId: string, rateStart: number, content: string) {
+    async function postComment(detailId: string, rateStart: number, content: string) {
         console.log("userId ", userId);
         console.log("detailId", detailId);
         console.log("rateStart", rateStart);
         console.log("comment", content);
-        if (rateStart === 0 || content === "" || !userId) {
+        if(!userId){
+            navigate("/login");
+        }
+
+        if (rateStart === 0 || content === ""||!userId ) {
             return;
         }
         const dateComment = new Date().toISOString().split("T")[0];
-        const newComment = await api.postComment(userId, detailId, rateStart, content, dateComment);
-        getComments(detailId, startIndex);
+        await api.postComment(userId, detailId, rateStart, content, dateComment);
+        await getComments(detailId, startIndex);
 
 
         // setComments(prev => [newComment, ...prev]);
@@ -262,14 +267,14 @@ function ProductDetail() {
                                 })}
                             </div>
                             <i className="fa-solid fa-paper-plane send"
-                               onClick={() => postComment(String(userId), typeof idProduct === "string" ? idProduct : "", rating, content)}
+                               onClick={() => postComment( typeof idProduct === "string" ? idProduct : "", rating, content)}
                             ></i>
                         </div>
                     </div>
 
                 </div>
 
-                <h1>Gợi ý</h1>
+                <h1 style={{color:"saddlebrown"}}>Gợi ý</h1>
                 {/*<div className={"pd3"}>*/}
 
                 {/*    {productRecommend?.map((item: Product, index: number) => {*/}

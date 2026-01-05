@@ -50,6 +50,9 @@ const Header = () => {
         params.set("page", "0");
         navigate(`/menu?${params.toString()}`);
     };
+    useEffect(() => {
+        handleSearch();
+    }, [keyword]);
 
 
     return (
@@ -74,11 +77,11 @@ const Header = () => {
                         type="text"
                         value={keyword}
                         onChange={(e) => setKeyword(e.target.value)}
-                        onKeyDown={(e) => {
-                            if (e.key === "Enter") {
-                                handleSearch();
-                            }
-                        }}
+                        // onKeyDown={(e) => {
+                        //     if (e.key === "Enter") {
+                        //         handleSearch();
+                        //     }
+                        // }}
                         placeholder="Nhập tên món ăn..."
                     />
                 </div>

@@ -2126,8 +2126,9 @@
       "userId": "3",
       "voucherId": 3,
       "code": "FOOD",
-      "used": false,
-      "id": 5
+      "used": true,
+      "id": 5,
+      "usedAt": "2026-01-05T09:27:33.492Z"
     },
     {
       "userId": "2",
@@ -2211,7 +2212,7 @@
       "voucherId": "3",
       "noteForChef": "Ít hành, thêm ớt tươi",
       "methodPayment": "CASH",
-      "status": "LOADING",
+      "status": "PENDING",
       "createdAt": "2026-01-03T14:30:00Z"
     },
     {
@@ -2226,6 +2227,18 @@
       "methodPayment": "CASH",
       "status": "COMPLETE",
       "createdAt": "2026-01-03T16:45:00Z"
+    },
+    {
+      "userId": "3",
+      "totalPrice": 35000,
+      "discount": 7000,
+      "finalPrice": 28000,
+      "addressId": 13,
+      "voucherId": 3,
+      "methodPayment": "MOMO",
+      "status": "WAITING_PAYMENT",
+      "createdAt": "2026-01-05T09:27:33.417Z",
+      "id": "zt0k038"
     }
   ],
   "orderItems": [
@@ -2234,7 +2247,6 @@
       "productId": "1",
       "orderId": "ORD-20260103-001",
       "quantity": 2
-
     },
     {
       "id": "ITEM-002",
@@ -2253,7 +2265,12 @@
       "productId": "100",
       "orderId": "ORD-20260103-002",
       "quantity": 1
+    },
+    {
+      "productId": "193",
+      "orderId": "zt0k038",
+      "quantity": 1,
+      "id": "V7xEnJW"
     }
   ]
-
 }

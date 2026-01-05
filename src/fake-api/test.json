@@ -1223,34 +1223,57 @@
   ],
   "orders": [
     {
-      "userId": "X2A_Kmd",
-      "items": [
-        {
-          "productId": "193",
-          "name": "Chả rươi",
-          "price": 35000,
-          "quantity": 1
-        },
-        {
-          "productId": "12",
-          "name": "Nước cam",
-          "price": 25000,
-          "quantity": 1
-        },
-        {
-          "productId": "13",
-          "name": "Bánh flan",
-          "price": 15000,
-          "quantity": 2
-        }
-      ],
-      "totalPrice": 90000,
-      "discount": 0,
-      "finalPrice": 90000,
-      "addressId": 17,
+      "id": "ORD-20260103-001",
+      "userId": "3",
+      "totalPrice": 105000,
+      "discount": 10000,
+      "finalPrice": 95000,
+      "addressId": 13,
+      "voucherId": "3",
+      "noteForChef": "Ít hành, thêm ớt tươi",
+      "methodPayment": "CASH",
       "status": "PENDING",
-      "createdAt": "2026-01-02T17:11:29.667Z",
-      "id": 1
+      "createdAt": "2026-01-03T14:30:00Z"
+    },
+    {
+      "id": "ORD-20260103-002",
+      "userId": "3",
+      "totalPrice": 25000,
+      "discount": 15000,
+      "finalPrice": 20000,
+      "addressId": 13,
+      "voucherId": "3",
+      "noteForChef": "Không hành, thêm tiêu và chanh tươi",
+      "methodPayment": "CASH",
+      "status": "COMPLETE",
+      "createdAt": "2026-01-03T16:45:00Z"
+    }
+  ],
+  "orderItems": [
+    {
+      "id": "ITEM-001",
+      "productId": "1",
+      "orderId": "ORD-20260103-001",
+      "quantity": 2
+
+    },
+    {
+      "id": "ITEM-002",
+      "productId": "2",
+      "orderId": "ORD-20260103-001",
+      "quantity": 1
+    },
+    {
+      "id": "ITEM-003",
+      "productId": "4",
+      "orderId": "ORD-20260103-002",
+      "quantity": 1
+    },
+    {
+      "id": "ITEM-004",
+      "productId": "100",
+      "orderId": "ORD-20260103-002",
+      "quantity": 1
     }
   ]
 }
