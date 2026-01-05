@@ -1,4 +1,7 @@
+
+import {useSearchParams} from "react-router-dom";
 import {Comment, User, Address, Order, OrderItem} from "../types/object";
+
 
 const GHN_TOKEN = "28cdfced-3b05-11f0-baf0-164baeb3f2fd";
 const GHN_BASE = "https://online-gateway.ghn.vn/shiip/public-api/master-data";
@@ -11,6 +14,14 @@ interface ProductQuery {
     sortField?: string;
     order?: string;
     page?: number;
+}
+interface OrderQuery {
+    userId?: string;
+    status?: string;
+    sortField?: string;
+    order?: string;
+
+
 }
 
 export const api = {
@@ -357,6 +368,28 @@ export const api = {
 
         return res.json();
     },
+    getOrderByUserId: async (query:OrderQuery) => {
+        const params = new URLSearchParams();
+        if(query.userId){
+            params.append("userId", query.userId);
+        }
+        if (query.sortField && query.order) {
+            params.append("_sort", query.sortField);
+            params.append("_order", query.order);
+        }
+        if (query.status){
+            params.append("status", query.status);
+        }
+        params.append("_embed","orderItems")
+        params.append("_expand","voucher")
+        params.append("_expand","address")
+        const res = await fetch(`${baseUrl}/orders?${params.toString()}`, {})
+        return res.json();
+    },
+    getOrderItemByOrderId: async (orderId: string) => {
+        const res = await fetch(`${baseUrl}/orderItems?orderId=${orderId}&_expand=product`, {})
+        return res.json();
+    }
 
 
     createOrderItem: async (item: Omit<OrderItem, "id">) => {

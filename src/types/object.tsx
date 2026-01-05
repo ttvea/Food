@@ -6,7 +6,6 @@ export interface DetailProduct {
     protein: number;
     fat: number;
     carbs: number;
-    quantity: number;
 }
 
 export interface Product {
@@ -83,10 +82,12 @@ export interface UserVoucher {
 }
 
 export interface OrderItem {
-    id: string;
-    productId: string;
-    orderId: string;
-    quantity: number;
+   id: string;
+   productId: string;
+   orderId: string;
+   quantity: number;
+   product?: Product;
+
 
 }
 
