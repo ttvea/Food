@@ -90,7 +90,6 @@
       "categoryId": "2",
       "price": 40000
     },
-
     {
       "id": "95",
       "name": "Đậu hủ kho nước tương",
@@ -1902,14 +1901,6 @@
       "comment": "Ngon lắm luôn",
       "dateComment": "2025-12-24",
       "id": "lYmLOYK"
-    },
-    {
-      "userId": "3",
-      "detailProductId": "193",
-      "rateStar": 4,
-      "comment": "Ngon lắm",
-      "dateComment": "2026-01-03",
-      "id": "TOgWCRM"
     }
   ],
   "users": [
@@ -2020,17 +2011,6 @@
       "isDefault": false,
       "userId": "2",
       "id": 16
-    },
-    {
-      "receiverName": "Lê Văn Luận",
-      "phone": "0971649429",
-      "province": "Hồ Chí Minh",
-      "district": "Quận Thủ Đức",
-      "ward": "Phường Linh Xuân",
-      "detail": "Services Hub Thủ Đức, 18/2C QL1A, Linh Xuân, Thủ Đức, Hồ Chí Minh",
-      "isDefault": true,
-      "userId": "X2A_Kmd",
-      "id": 17
     }
   ],
   "vouchers": [
@@ -2072,12 +2052,13 @@
     {
       "id": 4,
       "code": "TET2026",
-      "title": "Giảm 5k",
-      "description": "Giảm 5.000đ cho mọi đơn",
+      "title": "Giảm 15% ",
+      "description": "Giảm 15% cho đơn từ 20k",
       "discountType": "PERCENT",
-      "discountValue": 5,
-      "minOrder": 0,
-      "expireDate": "2025-12-31",
+      "discountValue": 20,
+      "maxDiscount": 10000,
+      "minOrder": 20000,
+      "expireDate": "2026-12-31",
       "quantity": 100
     },
     {
@@ -2274,4 +2255,5 @@
       "quantity": 1
     }
   ]
+
 }

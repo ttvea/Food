@@ -16,6 +16,7 @@ export interface Product {
     price: number;
     detailProducts?: DetailProduct;
 }
+
 export interface Comment {
     id: string;
     userId: string;
@@ -26,11 +27,13 @@ export interface Comment {
     user?: User;
 
 }
+
 export interface Category {
     id: string;
     nameCategory: string;
 
 }
+
 export interface User {
     id: number;
     username: string;
@@ -84,6 +87,8 @@ export interface OrderItem {
    orderId: string;
    quantity: number;
    product?: Product;
+
+
 }
 
 export interface Order {
@@ -96,8 +101,8 @@ export interface Order {
     addressId: number;
     voucherId?: string;
     noteForChef?: string;
-    methodPayment: string;
-    status: "LOADING" | "DELIVERING" | "COMPLETE" | "CANCEL";
+    methodPayment: | "CASH" | "BANK" | "MOMO" | "VNPAY";
+    status: | "WAITING_PAYMENT" | "PENDING" | "COOKING" | "DELIVERING" | "COMPLETE" | "CANCEL";
     createdAt: string;
     voucher?: Voucher;
     address?: Address;
