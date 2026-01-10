@@ -2184,8 +2184,9 @@
       "userId": "3",
       "voucherId": 7,
       "code": "FREESHIP2",
-      "used": false,
-      "id": 16
+      "used": true,
+      "id": 16,
+      "usedAt": "2026-01-10T15:11:00.934Z"
     },
     {
       "userId": "d066",
@@ -2207,36 +2208,78 @@
   "orders": [
     {
       "userId": "X2A_Kmd",
-      "totalPrice": 15000,
+      "totalPrice": 35000,
       "discount": 0,
       "shippingFee": 20000,
-      "finalPrice": 35000,
+      "finalPrice": 55000,
       "addressId": 19,
       "voucherId": "",
       "noteForChef": "",
       "methodPayment": "CASH",
-      "status": "CANCEL",
-      "createdAt": "2026-01-10T14:34:21.191Z",
+      "status": "PENDING",
+      "createdAt": "2026-01-10T15:02:49.207Z",
       "id": 1
     },
     {
-      "userId": "X2A_Kmd",
-      "totalPrice": 25000,
+      "userId": "3",
+      "totalPrice": 85000,
       "discount": 0,
-      "shippingFee": 20000,
-      "finalPrice": 45000,
-      "addressId": 19,
-      "voucherId": "",
+      "shippingFee": 0,
+      "finalPrice": 85000,
+      "addressId": 17,
+      "voucherId": 7,
       "noteForChef": "",
       "methodPayment": "BANK",
       "status": "WAITING_PAYMENT",
-      "createdAt": "2026-01-10T14:55:23.466Z",
+      "createdAt": "2026-01-10T15:11:00.885Z",
       "id": 2
+    },
+    {
+      "userId": "3",
+      "totalPrice": 30000,
+      "discount": 0,
+      "shippingFee": 20000,
+      "finalPrice": 50000,
+      "addressId": 17,
+      "voucherId": "",
+      "noteForChef": "",
+      "methodPayment": "CASH",
+      "status": "PENDING",
+      "createdAt": "2026-01-10T15:25:00.060Z",
+      "id": 3
+    },
+    {
+      "userId": "X2A_Kmd",
+      "totalPrice": 60000,
+      "discount": 0,
+      "shippingFee": 20000,
+      "finalPrice": 80000,
+      "addressId": 19,
+      "voucherId": "",
+      "noteForChef": "",
+      "methodPayment": "CASH",
+      "status": "PENDING",
+      "createdAt": "2026-01-10T15:36:20.490Z",
+      "id": 4
+    },
+    {
+      "userId": "X2A_Kmd",
+      "totalPrice": 60000,
+      "discount": 0,
+      "shippingFee": 20000,
+      "finalPrice": 80000,
+      "addressId": 19,
+      "voucherId": "",
+      "noteForChef": "",
+      "methodPayment": "CASH",
+      "status": "PENDING",
+      "createdAt": "2026-01-10T15:43:56.578Z",
+      "id": 5
     }
   ],
   "orderItems": [
     {
-      "productId": "1",
+      "productId": "193",
       "orderId": 1,
       "quantity": 1,
       "id": 1
@@ -2246,6 +2289,48 @@
       "orderId": 2,
       "quantity": 1,
       "id": 2
+    },
+    {
+      "productId": "179",
+      "orderId": 2,
+      "quantity": 1,
+      "id": 3
+    },
+    {
+      "productId": "164",
+      "orderId": 2,
+      "quantity": 1,
+      "id": 4
+    },
+    {
+      "productId": "146",
+      "orderId": 3,
+      "quantity": 1,
+      "id": 5
+    },
+    {
+      "productId": "194",
+      "orderId": 4,
+      "quantity": 1,
+      "id": 6
+    },
+    {
+      "productId": "179",
+      "orderId": 4,
+      "quantity": 1,
+      "id": 7
+    },
+    {
+      "productId": "2",
+      "orderId": 5,
+      "quantity": 1,
+      "id": 8
+    },
+    {
+      "productId": "179",
+      "orderId": 5,
+      "quantity": 1,
+      "id": 9
     }
   ]
 }

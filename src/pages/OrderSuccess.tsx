@@ -11,9 +11,7 @@ const OrderSuccess = () => {
         <div className="order-success-page">
             <div className="order-success-card">
                 <div className="success-icon">✅</div>
-
                 <h2>Đặt hàng thành công!</h2>
-
                 <p>
                     Cảm ơn bạn đã đặt hàng.
                     {orderId && (
