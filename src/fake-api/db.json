@@ -1996,7 +1996,7 @@
       "province": "Hồ Chí Minh",
       "district": "Quận Thủ Đức",
       "ward": "Phường Linh Xuân",
-      "detail": "Kho JV Sunrise, City, 27B Highway 1A, Linh Xuân, Thủ Đức, Hồ Chí Minh",
+      "detail": "246 Đường Số 8, Linh Xuân, Thủ Đức, Hồ Chí Minh",
       "isDefault": true,
       "userId": "3",
       "id": 17
@@ -2197,87 +2197,9 @@
     }
   ],
   "orders": [
-    {
-      "userId": "d066",
-      "totalPrice": 15000,
-      "discount": 5000,
-      "shippingFee": 10000,
-      "finalPrice": 20000,
-      "addressId": 18,
-      "voucherId": 5,
-      "noteForChef": "Lấy cơm dẻo khô",
-      "methodPayment": "MOMO",
-      "status": "WAITING_PAYMENT",
-      "createdAt": "2026-01-08T07:22:43.590Z",
-      "id": 1
-    },
-    {
-      "userId": "d066",
-      "totalPrice": 125000,
-      "discount": 0,
-      "shippingFee": 30000,
-      "finalPrice": 155000,
-      "addressId": 14,
-      "voucherId": "",
-      "noteForChef": "",
-      "methodPayment": "BANK",
-      "status": "WAITING_PAYMENT",
-      "createdAt": "2026-01-08T07:26:23.975Z",
-      "id": 2
-    },
-    {
-      "userId": "d066",
-      "totalPrice": 35000,
-      "discount": 0,
-      "shippingFee": 30000,
-      "finalPrice": 65000,
-      "addressId": 14,
-      "voucherId": "",
-      "noteForChef": "Lấy nhiều ớt",
-      "methodPayment": "CASH",
-      "status": "PENDING",
-      "createdAt": "2026-01-08T07:30:19.323Z",
-      "id": 3
-    },
-    {
-      "userId": "X2A_Kmd",
-      "totalPrice": 35000,
-      "discount": 7000,
-      "shippingFee": 20000,
-      "finalPrice": 48000,
-      "addressId": 19,
-      "voucherId": 3,
-      "noteForChef": "Nhiều cơm thêm",
-      "methodPayment": "MOMO",
-      "status": "WAITING_PAYMENT",
-      "createdAt": "2026-01-10T11:48:50.900Z",
-      "id": 4
-    }
+    
   ],
   "orderItems": [
-    {
-      "productId": "1",
-      "orderId": 1,
-      "quantity": 1,
-      "id": 1
-    },
-    {
-      "productId": "195",
-      "orderId": 2,
-      "quantity": 1,
-      "id": 2
-    },
-    {
-      "productId": "193",
-      "orderId": 3,
-      "quantity": 1,
-      "id": 3
-    },
-    {
-      "productId": "193",
-      "orderId": 4,
-      "quantity": 1,
-      "id": 4
-    }
+ 
   ]
 }
