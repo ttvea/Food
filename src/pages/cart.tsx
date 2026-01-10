@@ -9,11 +9,23 @@ function Cart() {
 
     if (cart.length === 0) {
         return (
-            <div className="cart-empty">
-                <h2>Giỏ hàng trống</h2>
-                <Link to="/menu">
-                    <button className="btn-primary">Quay lại menu</button>
-                </Link>
+            <div className="cart-empty-page">
+                <div className="cart-empty-header">
+                    <h2>GIỎ HÀNG</h2>
+                    <Link to="/menu" className="continue-shopping">
+                        <span className="cart-icon-empty"><i className="fa-solid fa-cart-plus"></i></span>
+                        Mua thêm sản phẩm khác
+                    </Link>
+                </div>
+
+                <div className="cart-empty-content">
+                    <img
+                        src={"https://etecvn.com/default/template/img/cart-empty.png"}
+                        alt="Giỏ hàng trống"
+                        className="cart-empty-img"
+                    />
+                    <p>Không có sản phẩm nào trong giỏ hàng của bạn</p>
+                </div>
             </div>
         );
     }
