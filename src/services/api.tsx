@@ -6,7 +6,7 @@ import {Comment, User, Address, Order, OrderItem} from "../types/object";
 const GHN_TOKEN = "28cdfced-3b05-11f0-baf0-164baeb3f2fd";
 const GHN_BASE = "https://online-gateway.ghn.vn/shiip/public-api/master-data";
 
-const baseUrl = "http://localhost:3001";
+const baseUrl = process.env.REACT_APP_API_URL || 'http://localhost:3001';
 
 interface ProductQuery {
     categoryId?: string;
