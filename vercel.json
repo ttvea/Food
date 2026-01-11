@@ -15,5 +15,15 @@
     "api/index.js": {
       "runtime": "@vercel/node@3.2.21"
     }
-  }
+  },
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": { "distDir": "build" }
+    }
+  ],
+  "routes": [
+    { "src": "/(.*)", "dest": "/index.html" }
+  ]
 }
