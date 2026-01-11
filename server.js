@@ -1,36 +1,30 @@
-const jsonServer = require('json-server');
-const path = require('path');
-const fs = require('fs'); // Để debug nếu cần
+const jsonServer = require('json-server')
 
-const server = jsonServer.create();
+const server = jsonServer.create()
 
-// Sử dụng process.cwd() thay __dirname (khuyến nghị Vercel)
-const dbPath = path.join(process.cwd(), 'src/fake-api/db.json');
+// Uncomment to allow write operations
+// const fs = require('fs')
+// const path = require('path')
+// const filePath = path.join('db.json')
+// const data = fs.readFileSync(filePath, "utf-8");
+// const db = JSON.parse(data);
+// const router = jsonServer.router(db)
 
-console.log('DB path:', dbPath); // Debug trong Vercel logs
+// Comment out to allow write operations
+const router = jsonServer.router('/src/fake-api/db.json')
 
-// Kiểm tra file tồn tại
-if (!fs.existsSync(dbPath)) {
-    console.error('db.json not found at:', dbPath);
-}
+const middlewares = jsonServer.defaults()
 
-const router = jsonServer.router(dbPath);
-const middlewares = jsonServer.defaults();
+server.use(middlewares)
+// Add this before server.use(router)
+server.use(jsonServer.rewriter({
+    '/api/*': '/$1',
+    '/blog/:resource/:id/show': '/:resource/:id'
+}))
+server.use(router)
+server.listen(3001, () => {
+    console.log('JSON Server is running')
+})
 
-server.use(middlewares);
-
-// CORS của bạn OK, giữ nguyên
-server.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Headers', '*');
-    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
-    if (req.method === 'OPTIONS') {
-        return res.sendStatus(200);
-    }
-    next();
-});
-
-server.use(jsonServer.bodyParser);
-server.use(router);
-
-module.exports = server;
+// Export the Server API
+module.exports = server
